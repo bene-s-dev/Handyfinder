@@ -709,71 +709,80 @@
       return prefs;
     }
 
-    // =========================================================================
-    // 4. DETERMINISTISCHER SCORING-ALGORITHMUS (MAPPING 1..5 AUF 0..100)
+   // =========================================================================
+    // 4. MULTI-KRITERIEN HIGH-PRECISION SCORING ENGINE
     // =========================================================================
     function calculateMatch(phone, prefs) {
-      let weightedDeviationSum = 0;
-      let totalWeights = 0;
+      let totalEarned = 0;
+      let totalMax = 0;
+      let dealbreakerPenalties = 0;
 
-      // Punkte-Mapping auf äquivalenten Ziel-Score:
-      // 1 = 30 (geringe Erwartung / irrelevant)
-      // 2 = 50
-      // 3 = 70 (solider Standard)
-      // 4 = 85 (wichtig)
-      // 5 = 98 (sehr wichtig / Flaggschiff-Forderung)
-      const pointToTargetScore = {
-        1: 30,
-        2: 50,
-        3: 70,
-        4: 85,
-        5: 98
+      // Exponentielle Gewichtung: Stufe 5 dominiert das Feld, Stufe 1 fällt komplett raus
+      const WEIGHTS = {
+        1: 0.0,
+        2: 0.35,
+        3: 1.0,
+        4: 2.8,
+        5: 6.0
+      };
+
+      // Schwellenwerte: Was muss ein Gerät bei welcher Nutzerstufe mindestens leisten?
+      const MIN_BENCHMARKS = {
+        5: 88, // Stufe 5 fordert echte Flaggschiff-Hardware
+        4: 78, // Stufe 4 verlangt gehobene Mittelklasse / High-End
+        3: 65,
+        2: 45,
+        1: 0
       };
 
       for (const key of sliderKeys) {
-        const userPoints = prefs[key]; // 1 bis 5
-        const targetExpected = pointToTargetScore[userPoints] || 70;
-        const phoneScore = phone.scores[key] !== undefined ? phone.scores[key] : 75;
+        const userLevel = prefs[key] || 3;
+        const weight = WEIGHTS[userLevel];
+        if (weight === 0) continue;
 
-        // Wenn das Handy die Erwartung nicht erfüllt
-        const diff = Math.max(0, targetExpected - phoneScore);
+        const phoneScore = phone.scores[key] !== undefined ? phone.scores[key] : 70;
+        const requiredThreshold = MIN_BENCHMARKS[userLevel];
 
-        // Gewichtung verstärkt sich bei höherer Wichtigkeit (Punkte 1 bis 5)
-        // Stufe 1 = 0.25 Multiplikator, Stufe 5 = 1.35 Multiplikator
-        const weightMultiplier = (userPoints * 0.25) + 0.1;
+        // 1. Sigmoide Nutzenfunktion (S-Kurve): Belohnt Spitzenwerte, straft Mittelmaß ab
+        // Wandelt lineare Hardwarewerte in logarithmische Wahrnehmung um
+        const normalizedScore = phoneScore / 100;
+        let satisfaction = 1 / (1 + Math.exp(-9 * (normalizedScore - 0.72)));
 
-        weightedDeviationSum += diff * weightMultiplier;
-        totalWeights += weightMultiplier;
-      }
+        // 2. Quadratischer Malus bei verfehlter Erwartung
+        if (phoneScore < requiredThreshold) {
+          const deficit = (requiredThreshold - phoneScore) / 100;
+          const penaltyFactor = Math.pow(deficit * 2.2, 2);
+          satisfaction = Math.max(0.05, satisfaction - penaltyFactor);
 
-      const avgWeightedDiff = weightedDeviationSum / (totalWeights || 1);
-      let rawScore = 100 - (avgWeightedDiff * 0.65);
-      return Math.min(99, Math.max(62, Math.round(rawScore)));
-    }
-
-    function executeSearch() {
-      const prefs = getCurrentPreferences();
-
-      let eligible = allPhones.filter(phone => {
-        for (const req of activeMustHaves) {
-          if (!phone.features[req]) return false;
+          // Prio 5 Verfehlung = harter K.O.-Abzug
+          if (userLevel === 5) {
+            dealbreakerPenalties += (deficit * 18);
+          }
         }
-        return true;
-      });
 
-      if (eligible.length === 0) {
-        eligible = [...allPhones];
+        // 3. Flaggschiff-Prämie: Geräte, die in Prio-5-Kategorien >95 Punkte erzielen, bekommen einen Boost
+        if (userLevel === 5 && phoneScore >= 95) {
+          satisfaction = Math.min(1.0, satisfaction * 1.12);
+        }
+
+        totalEarned += satisfaction * weight;
+        totalMax += weight;
       }
 
-      calculatedResults = eligible.map(phone => {
-        const match = calculateMatch(phone, prefs);
-        return { ...phone, matchScore: match };
-      }).sort((a, b) => b.matchScore - a.matchScore);
+      // Neutraler Fallback
+      if (totalMax === 0) return 75;
 
-      displayedCount = 10;
-      renderCards();
+      const rawRatio = totalEarned / totalMax;
+
+      // 4. Potenzierte Kontrast-Streckung: Drückt Verlierer unter 50% und zieht Sieger an 95%+
+      let calibratedScore = Math.pow(rawRatio, 1.85) * 100;
+      calibratedScore -= dealbreakerPenalties;
+
+      // 5. Saubere Normalisierung im Intervall [32% - 99%]
+      const finalMatch = Math.round(Math.min(99, Math.max(32, calibratedScore)));
+      return finalMatch;
     }
-
+    
     // =========================================================================
     // 5. 7-SEKUNDEN LADESCREEN
     // =========================================================================
