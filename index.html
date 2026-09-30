@@ -110,82 +110,118 @@
           Finde dein ideales Smartphone
         </h2>
         <p class="text-slate-400 text-sm sm:text-base">
-          Stelle deine Prioritäten ein. Der mathematische Algorithmus prüft Geräte und filtert kompromisslos nach deinen Vorgaben.
+          Wähle für jede Eigenschaft die Wichtigkeit von 1 (Nicht wichtig) bis 5 (Sehr wichtig). Unser Algorithmus filtert und sortiert kompromisslos.
         </p>
       </div>
 
       <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl max-w-4xl mx-auto mb-12">
         <h3 class="text-lg font-semibold text-cyan-400 mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-sliders"></i> Prioritäten
+          <i class="fa-solid fa-sliders"></i> Prioritäten (1 - 5 Punkte)
         </h3>
 
-        <!-- Sliders Grid (0 - 100%) -->
+        <!-- Sliders Grid (1 bis 5 Punkte) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-10">
           
+          <!-- Kamera Slider -->
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
                 <i class="fa-solid fa-camera text-cyan-400"></i> Kamera & Fotoqualität
               </span>
-              <span id="val-camera" class="text-cyan-400 font-mono text-sm font-bold">75%</span>
+              <span id="val-camera" class="text-cyan-400 font-mono text-xs sm:text-sm font-bold bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 rounded-lg">4/5 · Wichtig</span>
             </div>
-            <input type="range" id="pref-camera" min="0" max="100" value="75" class="w-full">
-            <p class="text-[11px] text-slate-400 mt-1">Periskop-Zoom, Sensorgröße & Nachtmodus</p>
+            <input type="range" id="pref-camera" min="1" max="5" step="1" value="4" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono px-1 mt-1">
+              <span>1: Nicht wichtig</span>
+              <span>3: Neutral</span>
+              <span>5: Sehr wichtig</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">Periskop-Zoom, Sensorgröße & Nachtmodus</p>
           </div>
 
+          <!-- Akku Slider -->
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
                 <i class="fa-solid fa-battery-full text-emerald-400"></i> Akkulaufzeit & Laden
               </span>
-              <span id="val-battery" class="text-emerald-400 font-mono text-sm font-bold">80%</span>
+              <span id="val-battery" class="text-emerald-400 font-mono text-xs sm:text-sm font-bold bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-0.5 rounded-lg">4/5 · Wichtig</span>
             </div>
-            <input type="range" id="pref-battery" min="0" max="100" value="80" class="w-full">
-            <p class="text-[11px] text-slate-400 mt-1">Kapazität (mAh), Screen-On-Time & Watt-Laderate</p>
+            <input type="range" id="pref-battery" min="1" max="5" step="1" value="4" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono px-1 mt-1">
+              <span>1: Nicht wichtig</span>
+              <span>3: Neutral</span>
+              <span>5: Sehr wichtig</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">Kapazität (mAh), Screen-On-Time & Watt-Laderate</p>
           </div>
 
+          <!-- Performance Slider -->
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
-                <i class="fa-solid fa-bolt text-amber-400"></i> Performance
+                <i class="fa-solid fa-bolt text-amber-400"></i> Performance & Gaming
               </span>
-              <span id="val-perf" class="text-amber-400 font-mono text-sm font-bold">70%</span>
+              <span id="val-perf" class="text-amber-400 font-mono text-xs sm:text-sm font-bold bg-amber-950/60 border border-amber-500/30 px-2.5 py-0.5 rounded-lg">4/5 · Wichtig</span>
             </div>
-            <input type="range" id="pref-perf" min="0" max="100" value="70" class="w-full">
-            <p class="text-[11px] text-slate-400 mt-1">Top-SoC, Grafikleistung & flüssiges Multitasking</p>
+            <input type="range" id="pref-perf" min="1" max="5" step="1" value="4" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono px-1 mt-1">
+              <span>1: Nicht wichtig</span>
+              <span>3: Neutral</span>
+              <span>5: Sehr wichtig</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">Top-SoC, Grafikleistung & flüssiges Multitasking</p>
           </div>
 
+          <!-- Display Slider -->
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
                 <i class="fa-solid fa-mobile-screen text-indigo-400"></i> Display-Qualität & Helligkeit
               </span>
-              <span id="val-display" class="text-indigo-400 font-mono text-sm font-bold">70%</span>
+              <span id="val-display" class="text-indigo-400 font-mono text-xs sm:text-sm font-bold bg-indigo-950/60 border border-indigo-500/30 px-2.5 py-0.5 rounded-lg">3/5 · Neutral</span>
             </div>
-            <input type="range" id="pref-display" min="0" max="100" value="70" class="w-full">
-            <p class="text-[11px] text-slate-400 mt-1">AMOLED, Spitzenhelligkeit (Nits) & 120Hz LTPO</p>
+            <input type="range" id="pref-display" min="1" max="5" step="1" value="3" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono px-1 mt-1">
+              <span>1: Nicht wichtig</span>
+              <span>3: Neutral</span>
+              <span>5: Sehr wichtig</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">AMOLED, Spitzenhelligkeit (Nits) & 120Hz LTPO</p>
           </div>
 
+          <!-- Kompaktheit Slider -->
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
-                <i class="fa-solid fa-compress text-violet-400"></i> Kompaktheit & Einhandbedienung
+                <i class="fa-solid fa-compress text-violet-400"></i> Kompaktheit & Handlichkeit
               </span>
-              <span id="val-compactness" class="text-violet-400 font-mono text-sm font-bold">40%</span>
+              <span id="val-compactness" class="text-violet-400 font-mono text-xs sm:text-sm font-bold bg-violet-950/60 border border-violet-500/30 px-2.5 py-0.5 rounded-lg">2/5 · Eher unwichtig</span>
             </div>
-            <input type="range" id="pref-compactness" min="0" max="100" value="40" class="w-full">
-            <p class="text-[11px] text-slate-400 mt-1">Leichtes Gehäuse, unter 6.36 Zoll bevorzugt</p>
+            <input type="range" id="pref-compactness" min="1" max="5" step="1" value="2" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono px-1 mt-1">
+              <span>1: Nicht wichtig</span>
+              <span>3: Neutral</span>
+              <span>5: Sehr wichtig</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">Leichtes Gehäuse, unter 6.36 Zoll bevorzugt</p>
           </div>
 
+          <!-- Update Support Slider -->
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
                 <i class="fa-solid fa-arrows-rotate text-sky-400"></i> Langlebigkeit & Update-Garantie
               </span>
-              <span id="val-support" class="text-sky-400 font-mono text-sm font-bold">75%</span>
+              <span id="val-support" class="text-sky-400 font-mono text-xs sm:text-sm font-bold bg-sky-950/60 border border-sky-500/30 px-2.5 py-0.5 rounded-lg">4/5 · Wichtig</span>
             </div>
-            <input type="range" id="pref-support" min="0" max="100" value="75" class="w-full">
-            <p class="text-[11px] text-slate-400 mt-1">5 bis 7 Jahre garantierte Android-/iOS-Updates</p>
+            <input type="range" id="pref-support" min="1" max="5" step="1" value="4" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono px-1 mt-1">
+              <span>1: Nicht wichtig</span>
+              <span>3: Neutral</span>
+              <span>5: Sehr wichtig</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-2">5 bis 7 Jahre garantierte Android-/iOS-Updates</p>
           </div>
 
         </div>
@@ -234,7 +270,7 @@
       </div>
     </section>
 
-    <!-- View 2: 7-Sekunden Ladescreen -->
+    <!-- View 2: Ladescreen -->
     <section id="loading-view" class="hidden min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
       <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 max-w-lg w-full flex flex-col items-center shadow-2xl relative overflow-hidden">
         
@@ -273,7 +309,7 @@
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Berechnet aus aktuellen Geräten exakt nach deinen Vorgaben.</p>
         </div>
         <button id="btn-new-search-top" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 hover:border-cyan-500/40 text-xs font-medium flex items-center gap-2 transition-all cursor-pointer">
-          <i class="fa-solid fa-rotate-left text-cyan-400"></i> Filter anpassen
+          <i class="fa-solid fa-rotate-left text-cyan-400"></i> Prioritäten anpassen
         </button>
       </div>
 
@@ -291,7 +327,7 @@
       <div class="text-center pt-8 border-t border-white/10 pb-8">
         <button id="btn-new-search-bottom" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-slate-800 via-slate-800 to-slate-700 hover:border-cyan-500/50 border border-white/10 text-white font-bold text-sm shadow-xl inline-flex items-center gap-3 transition-all cursor-pointer hover:shadow-[0_0_25px_rgba(6,182,212,0.25)]">
           <i class="fa-solid fa-sliders text-cyan-400"></i>
-          <span>Neue Suche starten</span>
+          <span>Neue Prioritäten setzen</span>
         </button>
       </div>
     </section>
@@ -353,7 +389,7 @@
           <button id="btn-close-admin-login" class="text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <p class="text-xs text-slate-400 mb-4">
-          Passwortgeschützter Zugriff. Standard: <code class="text-cyan-300 font-mono">admin</code> (oder konfiguriert via Vercel ENV <code class="text-cyan-300 font-mono">ADMIN_PASSWORD</code>).
+          Passwortgeschützter Zugriff. Standard: <code class="text-cyan-300 font-mono">admin</code>.
         </p>
         <div class="space-y-4">
           <div>
@@ -471,7 +507,7 @@
 
   <script>
     // =========================================================================
-    // 1. DATENBANK: NUR MODELLE AB 2024 (Aktuelle Flaggschiffe & Neuerungen)
+    // 1. DATENBANK: NUR MODELLE AB 2024
     // =========================================================================
     const CHINESE_BRANDS = [
       'xiaomi', 'poco', 'redmi', 'oneplus', 'honor', 'huawei', 'vivo', 'oppo', 
@@ -479,7 +515,7 @@
     ];
 
     const RAW_PHONES = [
-      // --- SAMSUNG (Galaxy S25, S24, Z6, A-Serie 2024/2025) ---
+      // --- SAMSUNG ---
       { brand: "Samsung", name: "Galaxy S25 Ultra", soc: "Qualcomm Snapdragon 8 Elite for Galaxy", uvp: "1.449 €", display: "6.9\" Dynamic AMOLED 2X 120Hz LTPO", battery: "5.000 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 97, battery: 92, perf: 98, display: 98, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["200 MP Quad-Kamera mit Spitzen-Periskop", "Reflexionsarmes Gorilla Armor 2", "7 Jahre garantierte Updates"], cons: ["Breites Gehäuse", "Nur 45W Laden"] },
       { brand: "Samsung", name: "Galaxy S25+", soc: "Qualcomm Snapdragon 8 Elite for Galaxy", uvp: "1.149 €", display: "6.7\" Dynamic AMOLED 2X QHD+ 120Hz", battery: "4.900 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 90, battery: 92, perf: 98, display: 96, compactness: 42, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr scharfes QHD+ Display", "Top Snapdragon 8 Elite Power", "Sehr ausdauernder Akku"], cons: ["Keine Periskop-Telekamera", "Laden auf 45W limitiert"] },
       { brand: "Samsung", name: "Galaxy S25", soc: "Qualcomm Snapdragon 8 Elite for Galaxy", uvp: "899 €", display: "6.2\" Dynamic AMOLED 2X 120Hz", battery: "4.000 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 88, battery: 80, perf: 98, display: 93, compactness: 94, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Extrem handlich und leicht (162g)", "Flaggschiff-Prozessor ohne Drosselung", "7 Jahre Updates"], cons: ["Kleiner 4.000 mAh Akku", "Nur 25 Watt Laden"] },
@@ -493,7 +529,7 @@
       { brand: "Samsung", name: "Galaxy A35 5G", soc: "Samsung Exynos 1380", uvp: "379 €", display: "6.6\" Super AMOLED 120Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 74, battery: 87, perf: 73, display: 84, compactness: 50, support: 86 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Faires AMOLED-Display für unter 400€", "IP67 Wasserdicht", "Stereo-Lautsprecher"], cons: ["Plastikrahmen", "Mäßige Low-Light Kamera"] },
       { brand: "Samsung", name: "Galaxy A16 5G", soc: "Samsung Exynos 1330", uvp: "229 €", display: "6.7\" Super AMOLED 90Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 65, battery: 88, perf: 62, display: 76, compactness: 48, support: 88 }, features: { wirelessCharging: false, ip68: false, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["Unglaubliche 6 Jahre Update-Zusage in der Einsteigerklasse", "Großes AMOLED-Panel", "Solider 5.000 mAh Akku"], cons: ["Nur 90Hz statt 120Hz", "Langsame Ladezeit"] },
 
-      // --- APPLE (iPhone 18 & 17 Serien, iPhone 16 Serien ab 2024) ---
+      // --- APPLE ---
       { brand: "Apple", name: "iPhone 18 Pro Max", soc: "Apple A20 Pro (2nm TSMC)", uvp: "1.549 €", display: "6.9\" Tandem OLED (120Hz ProMotion, 3.500 Nits)", battery: "4.950 mAh (35W MagSafe)", storage: "256 GB Basis", scores: { camera: 99, battery: 99, perf: 99, display: 99, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["2nm A20 Pro Flaggschiff-Prozessor", "Ultrahelles Tandem-OLED Display", "Branchenbeste 8K Dolby Vision Videofunktion"], cons: ["Sehr teuer", "Kein 65W+ Schnellladen"] },
       { brand: "Apple", name: "iPhone 18 Pro", soc: "Apple A20 Pro (2nm TSMC)", uvp: "1.299 €", display: "6.3\" Tandem OLED (120Hz ProMotion)", battery: "3.850 mAh (35W MagSafe)", storage: "256 GB Basis", scores: { camera: 98, battery: 92, perf: 99, display: 98, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["Kompaktes 6.3 Zoll Gehäuse mit voller 2nm Power", "Periskop-Telekamera mit variablem Zoom", "Hervorragende Akkulaufzeit"], cons: ["Langsames Kabel-Laden", "Hoher Preis"] },
       { brand: "Apple", name: "iPhone 18", soc: "Apple A20 (2nm TSMC)", uvp: "999 €", display: "6.1\" OLED (120Hz ProMotion)", battery: "3.800 mAh (25W MagSafe)", storage: "256 GB Basis", scores: { camera: 90, battery: 89, perf: 96, display: 93, compactness: 94, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Endlich 120Hz ProMotion im Standard-iPhone", "256 GB Basisspeicher", "A20 High-End Performance"], cons: ["Keine dedizierte Telezoom-Kamera", "Kein 65W+ Laden"] },
@@ -506,7 +542,7 @@
       { brand: "Apple", name: "iPhone 16 Plus", soc: "Apple A18 (3nm)", uvp: "1.099 €", display: "6.7\" Super Retina XDR OLED (60Hz)", battery: "4.674 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 96, perf: 94, display: 84, compactness: 40, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Hervorragende Akkulaufzeit", "Action Button & Kamera-Steuerung", "Flotter A18 Prozessor"], cons: ["Nur 60Hz Bildwiederholrate", "Keine dedizierte Telekamera"] },
       { brand: "Apple", name: "iPhone 16", soc: "Apple A18 (3nm)", uvp: "949 €", display: "6.1\" Super Retina XDR OLED (60Hz)", battery: "3.561 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 87, battery: 85, perf: 94, display: 84, compactness: 94, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr kompakt und leicht", "Apple Intelligence Ready mit A18 & 8GB RAM", "Neue Kamera-Taste"], cons: ["Nur 60Hz Display", "Keine Zoomkamera"] },
 
-      // --- GOOGLE (Pixel 10 Serien & Pixel 9 Serien ab 2024) ---
+      // --- GOOGLE ---
       { brand: "Google", name: "Pixel 10 Pro XL", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "1.249 €", display: "6.8\" Super Actua LTPO OLED 120Hz (3.200 Nits)", battery: "5.200 mAh (45W, 25W Qi)", storage: "256 GB Basis", scores: { camera: 99, battery: 95, perf: 94, display: 98, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Neuer Tensor G5 von TSMC gefertigt (wesentlich effizienter)", "Referenzklasse bei KI-Fotografie & Video", "7 Jahre garantierte Updates"], cons: ["Kein 65W+ Schnellladen", "Relativ schwer"] },
       { brand: "Google", name: "Pixel 10 Pro", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "1.149 €", display: "6.3\" Super Actua LTPO OLED 120Hz", battery: "4.850 mAh (35W, 23W Qi)", storage: "256 GB Basis", scores: { camera: 98, battery: 91, perf: 94, display: 97, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["TSMC-gefertigter Tensor G5 ohne Hitzeprobleme", "Kompaktes Gehäuse mit Top-Periskopkamera", "7 Jahre Updates"], cons: ["Gaming-GPU noch hinter Snapdragon 8 Elite", "Kein 65W+ Schnellladen"] },
       { brand: "Google", name: "Pixel 10", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "899 €", display: "6.3\" Actua OLED 120Hz", battery: "4.800 mAh (30W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 93, battery: 90, perf: 93, display: 93, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Stark verbesserte Effizienz durch TSMC-Fertigung", "Sehr gute Haupt- & Ultraweitwinkelkamera", "7 Jahre Updates"], cons: ["Keine optische Telekamera", "Nur 30W Laderate"] },
@@ -516,12 +552,12 @@
       { brand: "Google", name: "Pixel 9 Pro Fold", soc: "Google Tensor G4 (Titan M2)", uvp: "1.899 €", display: "8.0\" Foldable LTPO + 6.3\" Front", battery: "4.650 mAh (21W, 7.5W Qi)", storage: "256 GB Basis", scores: { camera: 91, battery: 82, perf: 84, display: 95, compactness: 28, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr dünnes Gehäuse im aufgeklappten Zustand", "Kompaktes Seitenverhältnis der Front", "7 Jahre Updates"], cons: ["Sehr teuer", "Langsames Laden (21W)"] },
       { brand: "Google", name: "Pixel 8a", soc: "Google Tensor G3", uvp: "549 €", display: "6.1\" Actua OLED 120Hz", battery: "4.492 mAh (18W, 7.5W Qi)", storage: "128 GB Basis", scores: { camera: 88, battery: 81, perf: 82, display: 88, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: false, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["7 Jahre Support in der Mittelklasse", "Starke KI-Fotofunktionen", "Kompakt & Qi-fähig"], cons: ["Dickere Displayränder", "Nur 18W Ladeleistung"] },
 
-      // --- NOTHING (London, UK) ---
+      // --- NOTHING ---
       { brand: "Nothing", name: "Nothing Phone (3)", soc: "Qualcomm Snapdragon 8s Gen 3", uvp: "749 €", display: "6.7\" LTPO OLED 120Hz", battery: "5.000 mAh (65W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 88, battery: 91, perf: 92, display: 92, compactness: 46, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["Weiterentwickeltes Glyph-Interface", "Erstmals vollwertiger IP68 Wasserschutz", "Sehr sauberes Nothing OS 3.0"], cons: ["Keine Periskop-Telekamera", "Design polarisiert"] },
       { brand: "Nothing", name: "Nothing Phone (2a) Plus", soc: "MediaTek Dimensity 7350 Pro", uvp: "399 €", display: "6.7\" Flexible AMOLED 120Hz", battery: "5.000 mAh (50W)", storage: "256 GB Basis", scores: { camera: 80, battery: 90, perf: 80, display: 86, compactness: 48, support: 82 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["50 MP Selfie-Kamera", "Großer 5.000 mAh Akku", "Eigenständiges transparentes Design"], cons: ["Kein kabelloses Laden", "Kunststoff-Rückseite"] },
       { brand: "Nothing", name: "Nothing Phone (2a)", soc: "MediaTek Dimensity 7200 Pro", uvp: "329 €", display: "6.7\" Flexible AMOLED 120Hz", battery: "5.000 mAh (45W)", storage: "128 GB Basis", scores: { camera: 77, battery: 89, perf: 76, display: 85, compactness: 48, support: 80 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["Hervorragendes Preis-Leistungs-Verhältnis", "Sympathisches Glyph-Licht", "Gute Stereo-Speaker"], cons: ["Kein Qi-Charging", "Nur IP54"] },
 
-      // --- ONEPLUS (China-Marke) ---
+      // --- ONEPLUS ---
       { brand: "OnePlus", name: "OnePlus 15", soc: "Qualcomm Snapdragon 8 Elite Gen 2", uvp: "1.049 €", display: "6.82\" 2K LTPO AMOLED 120Hz", battery: "6.200 mAh Silizium-Akku (100W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 96, battery: 100, perf: 99, display: 98, compactness: 30, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Gigantischer 6.200 mAh Silizium-Akku", "100W Schnellladung & 50W Qi", "Hasselblad Triple-Kamera mit Periskop"], cons: ["Großes, schweres Format", "Kein kompakter Formfaktor"] },
       { brand: "OnePlus", name: "OnePlus 13", soc: "Qualcomm Snapdragon 8 Elite", uvp: "999 €", display: "6.82\" 2K LTPO AMOLED 120Hz", battery: "6.000 mAh Silizium-Akku (100W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 94, battery: 99, perf: 98, display: 98, compactness: 32, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Riesiger 6.000 mAh Silizium-Akku", "100W Laden & 50W Wireless", "IP68 & IP69 Schutz", "Hasselblad Kamerasystem"], cons: ["Kein kompaktes Format", "Kamera-Modul polarisiert"] },
       { brand: "OnePlus", name: "OnePlus 13R", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "699 €", display: "6.78\" 1.5K AMOLED 120Hz", battery: "6.000 mAh (80W Fast Charge)", storage: "256 GB Basis", scores: { camera: 84, battery: 98, perf: 93, display: 94, compactness: 35, support: 84 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Brutale Akkulaufzeit mit 6.000 mAh", "Snapdragon 8 Gen 3 Flaggschiff-Power zum Mittelklassepreis", "Sehr helles Display"], cons: ["Kein kabelloses Laden", "Keine Periskop-Linse"] },
@@ -530,7 +566,7 @@
       { brand: "OnePlus", name: "OnePlus Nord 4", soc: "Qualcomm Snapdragon 7+ Gen 3", uvp: "499 €", display: "6.74\" AMOLED 120Hz", battery: "5.500 mAh (100W)", storage: "256 GB Basis", scores: { camera: 79, battery: 95, perf: 87, display: 89, compactness: 40, support: 84 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["Elegantes Unibody-Metallgehäuse", "100W Schnellladung", "Großer 5.500 mAh Akku"], cons: ["Kein kabelloses Laden", "Kein Periskop-Zoom"] },
       { brand: "OnePlus", name: "OnePlus Nord CE4 Lite", soc: "Qualcomm Snapdragon 695 5G", uvp: "299 €", display: "6.67\" AMOLED 120Hz", battery: "5.110 mAh (80W)", storage: "256 GB Basis", scores: { camera: 69, battery: 89, perf: 66, display: 80, compactness: 50, support: 76 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["80 Watt Schnellladen in der 300€-Klasse", "Helles AMOLED", "Kopfhöreranschluss vorhanden"], cons: ["Älterer Snapdragon 695 Prozessor", "Mäßige Kameras"] },
 
-      // --- XIAOMI & POCO & REDMI (China-Marke) ---
+      // --- XIAOMI & POCO & REDMI ---
       { brand: "Xiaomi", name: "Xiaomi 15 Pro", soc: "Qualcomm Snapdragon 8 Elite", uvp: "1.099 €", display: "6.73\" 2K LTPO OLED 120Hz", battery: "6.100 mAh (90W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 97, battery: 98, perf: 98, display: 97, compactness: 38, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Riesiger 6.100 mAh Silizium-Akku", "Leica Triple-50MP mit Periskop", "Snapdragon 8 Elite Performance"], cons: ["Hohes Gewicht", "HyperOS Bloatware"] },
       { brand: "Xiaomi", name: "Xiaomi 15", soc: "Qualcomm Snapdragon 8 Elite", uvp: "899 €", display: "6.36\" LTPO OLED 120Hz", battery: "5.400 mAh (90W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 92, battery: 94, perf: 98, display: 95, compactness: 84, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: true, esim: true }, pros: ["Kompaktes 6.36\" Gehäuse mit 5.400 mAh Akku", "Extrem schmale Displayränder", "Volle Snapdragon 8 Elite Power"], cons: ["Kein 5x Periskop-Zoom", "Software braucht Feinschliff"] },
       { brand: "Xiaomi", name: "Xiaomi 14 Ultra", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "1.499 €", display: "6.73\" WQHD+ AMOLED 120Hz", battery: "5.000 mAh (90W, 80W Qi)", storage: "512 GB Basis", scores: { camera: 98, battery: 86, perf: 94, display: 95, compactness: 32, support: 84 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["1-Zoll-Sensor mit stufenloser Blende", "Zwei Leica-Telekameras (3.2x und 5x Periskop)", "80W drahtloses Laden"], cons: ["Sehr kopflastiges Kameradesign", "Teuer"] },
@@ -545,7 +581,7 @@
       { brand: "Xiaomi Redmi", name: "Redmi Note 13 Pro+ 5G", soc: "MediaTek Dimensity 7200-Ultra", uvp: "449 €", display: "6.67\" Curved AMOLED 120Hz", battery: "5.000 mAh (120W)", storage: "256 GB Basis", scores: { camera: 83, battery: 87, perf: 82, display: 90, compactness: 40, support: 80 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["200 MP Hauptkamera", "120 Watt HyperCharge", "IP68 Wasserdicht"], cons: ["Kein kabelloses Laden", "Curved Display anfällig für Reflexionen"] },
       { brand: "Xiaomi Redmi", name: "Redmi Note 13 Pro 5G", soc: "Qualcomm Snapdragon 7s Gen 2", uvp: "399 €", display: "6.67\" AMOLED 120Hz", battery: "5.100 mAh (67W)", storage: "256 GB Basis", scores: { camera: 80, battery: 88, perf: 77, display: 88, compactness: 46, support: 80 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["200 MP Sensor mit OIS", "Sehr scharfes 1.5K Display", "Kopfhöreranschluss vorhanden"], cons: ["Nur IP54", "Kein Zoom-Sensor"] },
 
-      // --- HONOR & HUAWEI (China-Marke) ---
+      // --- HONOR & HUAWEI ---
       { brand: "Honor", name: "Magic6 Pro", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "1.299 €", display: "6.8\" LTPO OLED 120Hz 5.000 Nits", battery: "5.600 mAh Silizium-Akku (80W, 66W Qi)", storage: "512 GB Basis", scores: { camera: 97, battery: 96, perf: 94, display: 96, compactness: 30, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["180 MP Periskop-Telekamera mit fantastischer Schärfe", "Kälteresistenter 5.600 mAh Akku", "Sichere 3D-Gesichtserkennung"], cons: ["Große Display-Pille", "Eigenwillige Software"] },
       { brand: "Honor", name: "Magic V3", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "1.999 €", display: "7.92\" Foldable LTPO + 6.43\" Front", battery: "5.150 mAh (66W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 93, battery: 90, perf: 94, display: 96, compactness: 45, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Dünnstes Foldable der Welt (unter 9.3mm zusammengeklappt)", "IPX8 Wasserschutz & Periskop-Kamera", "Großer 5.150 mAh Akku"], cons: ["Sehr hoher Preis", "Kamerabuckel ragt spürbar heraus"] },
       { brand: "Honor", name: "Honor 200 Pro", soc: "Qualcomm Snapdragon 8s Gen 3", uvp: "799 €", display: "6.78\" AMOLED 120Hz 4.000 Nits", battery: "5.200 mAh (100W, 66W Qi)", storage: "512 GB Basis", scores: { camera: 90, battery: 92, perf: 90, display: 93, compactness: 38, support: 84 }, features: { wirelessCharging: true, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["Harcourt Porträt-Modus mit Studioqualität", "100W Kabel und 66W Wireless Charging", "512 GB Basisspeicher"], cons: ["Kein IP68 (nur IP55)", "Kein Periskop-Zoom"] },
@@ -553,7 +589,7 @@
       { brand: "Honor", name: "Honor Magic6 Lite", soc: "Qualcomm Snapdragon 6 Gen 1", uvp: "399 €", display: "6.78\" AMOLED 120Hz", battery: "5.300 mAh (35W)", storage: "256 GB Basis", scores: { camera: 74, battery: 94, perf: 72, display: 86, compactness: 46, support: 78 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["Extrem bruchsicheres Displayglas (Ultra-Bounce)", "Sehr lange Akkulaufzeit mit 5.300 mAh", "Geringes Gewicht"], cons: ["Nur 35W Laden", "Kein OIS an Bord"] },
       { brand: "Huawei", name: "Pura 70 Ultra", soc: "HiSilicon Kirin 9010", uvp: "1.499 €", display: "6.8\" LTPO OLED 120Hz", battery: "5.200 mAh (100W, 80W Qi)", storage: "512 GB Basis", scores: { camera: 99, battery: 90, perf: 80, display: 96, compactness: 32, support: 75 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: false }, pros: ["Ausfahrbares Objektiv mit bester Schnappschuss-Qualität", "Brillantes Makro-Teleobjektiv", "100W Laden"], cons: ["Keine Google-Dienste ab Werk", "Kirin-Chip ohne 5G in Europa limitiert"] },
 
-      // --- VIVO & OPPO & REALME (China-Marke) ---
+      // --- VIVO & OPPO & REALME ---
       { brand: "vivo", name: "X200 Pro", soc: "MediaTek Dimensity 9400", uvp: "1.299 €", display: "6.78\" LTPO AMOLED 120Hz", battery: "6.000 mAh Silizium-Akku (90W, 30W Qi)", storage: "512 GB Basis", scores: { camera: 99, battery: 98, perf: 97, display: 97, compactness: 32, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["200 MP Zeiss APO Telekamera mit unglaublicher Porträtschärfe", "Riesiger 6.000 mAh Akku", "Dimensity 9400 Powerhouse"], cons: ["Sehr großes Kameramodul", "Funtouch OS Software Geschmackssache"] },
       { brand: "vivo", name: "X100 Pro", soc: "MediaTek Dimensity 9300", uvp: "1.199 €", display: "6.78\" LTPO AMOLED 120Hz", battery: "5.400 mAh (100W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 98, battery: 94, perf: 92, display: 94, compactness: 32, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["1-Zoll-Hauptsensor mit Zeiss T* Beschichtung", "100W Fast Charging", "Farbechte Bildwiedergabe"], cons: ["Kamerabuckel steht weit ab", "Keine 7 Jahre Updatezusage"] },
       { brand: "OPPO", name: "Find X8 Pro", soc: "MediaTek Dimensity 9400", uvp: "1.199 €", display: "6.78\" LTPO AMOLED 120Hz", battery: "5.910 mAh Silizium-Akku (80W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 97, battery: 97, perf: 97, display: 96, compactness: 32, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Zwei Periskop-Kameras (3x und 6x optisch)", "Hasselblad Farbabstimmung", "5.910 mAh Dauerläufer"], cons: ["Schweres Gehäuse", "Schnellstart-Kamerataste gewöhnungsbedürftig"] },
@@ -561,12 +597,10 @@
       { brand: "realme", name: "GT 6", soc: "Qualcomm Snapdragon 8s Gen 3", uvp: "699 €", display: "6.78\" LTPO AMOLED 120Hz 6.000 Nits", battery: "5.500 mAh (120W)", storage: "256 GB Basis", scores: { camera: 86, battery: 95, perf: 91, display: 95, compactness: 38, support: 82 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Brutal helles 6.000 Nits Display", "120 Watt SuperDart Ladezeit", "Sehr gute Akkulaufzeit"], cons: ["Kein kabelloses Laden", "Nur IP65"] },
       { brand: "realme", name: "12 Pro+ 5G", soc: "Qualcomm Snapdragon 7s Gen 2", uvp: "499 €", display: "6.7\" Curved AMOLED 120Hz", battery: "5.000 mAh (67W)", storage: "256 GB Basis", scores: { camera: 85, battery: 88, perf: 78, display: 88, compactness: 42, support: 80 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: false }, pros: ["Echtes 3x Periskop-Teleobjektiv für unter 500€", "Luxuriöses Leder-Rückseitendesign", "Solider Akku"], cons: ["Etwas schwächerer Prozessor", "Nur IP65"] },
 
-      // --- MOTOROLA (Chicago, USA / Lenovo) ---
+      // --- MOTOROLA, SONY & ASUS ---
       { brand: "Motorola", name: "Edge 50 Ultra", soc: "Qualcomm Snapdragon 8s Gen 3", uvp: "999 €", display: "6.7\" Super HD pOLED 144Hz", battery: "4.500 mAh (125W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 92, battery: 85, perf: 91, display: 94, compactness: 44, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Echtholz- oder Lederrückseite", "125W Kabel & 50W Wireless Charging", "3x Periskopkamera & 144Hz"], cons: ["4.500 mAh Akku knapp bemessen", "Nur 3 OS-Updates zugesagt"] },
       { brand: "Motorola", name: "Edge 50 Pro", soc: "Qualcomm Snapdragon 7 Gen 3", uvp: "699 €", display: "6.7\" pOLED 144Hz", battery: "4.500 mAh (125W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 87, battery: 84, perf: 82, display: 93, compactness: 46, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["125W Schnellladung & 50W Qi", "Pantone-zertifizierte Farben", "Sehr handlich & IP68"], cons: ["Akkukapazität nur 4.500 mAh", "Prozessor nur solide Mittelklasse"] },
       { brand: "Motorola", name: "Razr 50 Ultra", soc: "Qualcomm Snapdragon 8s Gen 3", uvp: "1.199 €", display: "6.9\" Foldable 165Hz + 4.0\" Außendisplay", battery: "4.000 mAh (45W, 15W Qi)", storage: "512 GB Basis", scores: { camera: 85, battery: 82, perf: 91, display: 95, compactness: 85, support: 84 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Großes, vollwertig nutzbares Außendisplay", "165Hz Bildwiederholrate", "IPX8 Wasserdicht"], cons: ["Keine Ultraweitwinkelkamera", "Kompakter Akku"] },
-
-      // --- SONY & ASUS (Japan / Taiwan) ---
       { brand: "Sony", name: "Xperia 1 VI", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "1.399 €", display: "6.5\" FHD+ LTPO OLED 120Hz", battery: "5.000 mAh (30W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 95, battery: 96, perf: 94, display: 92, compactness: 45, support: 85 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Stufenloser kontinuierlicher optischer Zoom (85-170mm)", "3.5mm Klinkenbuchse & MicroSD-Slot", "Sehr lange Akkulaufzeit"], cons: ["Verzicht auf 4K-Display", "Nur 30W Ladeleistung"] },
       { brand: "Asus", name: "Zenfone 11 Ultra", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "999 €", display: "6.78\" LTPO AMOLED 144Hz", battery: "5.500 mAh (65W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 88, battery: 95, perf: 95, display: 94, compactness: 35, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Riesiger 5.500 mAh Akku", "3.5mm Kopfhöreranschluss", "Gimbal-Kamera-Stabilisierung"], cons: ["Kein Kompaktgerät mehr", "Kein Periskop-Zoom"] },
       { brand: "Asus ROG", name: "ROG Phone 8 Pro", soc: "Qualcomm Snapdragon 8 Gen 3", uvp: "1.199 €", display: "6.78\" AMOLED 165Hz LTPO", battery: "5.500 mAh (65W, 15W Qi)", storage: "512 GB Basis", scores: { camera: 87, battery: 95, perf: 98, display: 96, compactness: 32, support: 80 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["AirTrigger-Schultertasten für Gaming", "IP68 Wasserdicht & Qi-Laden", "AnimeVision LED-Rückseite"], cons: ["Groß & schwer", "Kürzere Update-Garantie"] },
@@ -574,7 +608,7 @@
     ];
 
     // =========================================================================
-    // 2. STATE MANAGEMENT & AUTO-NORMALISIERUNG
+    // 2. STATE & 5-STUFEN TEXT-DEFINITIONEN
     // =========================================================================
     let allPhones = [];
     let calculatedResults = [];
@@ -582,6 +616,15 @@
     let compareList = [];
     const activeMustHaves = new Set();
     const sliderKeys = ['camera', 'battery', 'perf', 'display', 'compactness', 'support'];
+
+    // 5-Punkte Skala mit Labels
+    const POINT_LABELS = {
+      1: "1/5 · Nicht wichtig",
+      2: "2/5 · Eher unwichtig",
+      3: "3/5 · Neutral",
+      4: "4/5 · Wichtig",
+      5: "5/5 · Sehr wichtig"
+    };
 
     function initApp() {
       loadDatabase();
@@ -602,14 +645,12 @@
           phone.id = `phone-${idx}-${phone.brand.toLowerCase()}-${phone.name.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
         }
 
-        // 1. Bene-Empfehlung nur 1x bei Samsung und Nothing
         const isBene = phone.brand.toLowerCase().includes('samsung') || phone.brand.toLowerCase().includes('nothing');
         phone.pros = phone.pros.filter(p => !p.includes('Diese Marke wird von Bene empfohlen'));
         if (isBene) {
           phone.pros.unshift("Diese Marke wird von Bene empfohlen.");
         }
 
-        // 2. China-Phone Con-Punkt bei chinesischen Marken
         const brandKey = phone.brand.toLowerCase().trim();
         const isChinaBrand = CHINESE_BRANDS.some(cb => brandKey.includes(cb));
         phone.cons = phone.cons.filter(c => !c.toLowerCase().includes('china-phone') && !c.toLowerCase().includes('chinesischer hersteller'));
@@ -622,15 +663,20 @@
     }
 
     // =========================================================================
-    // 3. SLIDERS & MUST-HAVES
+    // 3. SLIDERS (1 BIS 5 PUNKTE) & MUST-HAVES
     // =========================================================================
     function setupSliders() {
       sliderKeys.forEach(key => {
         const slider = document.getElementById(`pref-${key}`);
         const label = document.getElementById(`val-${key}`);
         if (slider && label) {
+          // Initiale Beschriftung passend zum initialen value
+          const initialVal = parseInt(slider.value, 10);
+          label.innerText = POINT_LABELS[initialVal] || `${initialVal}/5`;
+
           slider.addEventListener('input', (e) => {
-            label.innerText = `${e.target.value}%`;
+            const val = parseInt(e.target.value, 10);
+            label.innerText = POINT_LABELS[val] || `${val}/5`;
           });
         }
       });
@@ -659,31 +705,50 @@
       const prefs = {};
       sliderKeys.forEach(key => {
         const el = document.getElementById(`pref-${key}`);
-        prefs[key] = el ? parseInt(el.value, 10) || 50 : 50;
+        prefs[key] = el ? parseInt(el.value, 10) || 3 : 3;
       });
       return prefs;
     }
 
     // =========================================================================
-    // 4. DETERMINISTISCHER SCORING-ALGORITHMUS (Kein Random)
+    // 4. DETERMINISTISCHER SCORING-ALGORITHMUS (MAPPING 1..5 AUF 0..100)
     // =========================================================================
     function calculateMatch(phone, prefs) {
       let weightedDeviationSum = 0;
       let totalWeights = 0;
 
+      // Punkte-Mapping auf äquivalenten Ziel-Score:
+      // 1 = 30 (geringe Erwartung / irrelevant)
+      // 2 = 50
+      // 3 = 70 (solider Standard)
+      // 4 = 85 (wichtig)
+      // 5 = 98 (sehr wichtig / Flaggschiff-Forderung)
+      const pointToTargetScore = {
+        1: 30,
+        2: 50,
+        3: 70,
+        4: 85,
+        5: 98
+      };
+
       for (const key of sliderKeys) {
-        const userWeight = prefs[key];
+        const userPoints = prefs[key]; // 1 bis 5
+        const targetExpected = pointToTargetScore[userPoints] || 70;
         const phoneScore = phone.scores[key] !== undefined ? phone.scores[key] : 75;
 
-        const diff = Math.max(0, userWeight - phoneScore);
-        const weightMultiplier = (userWeight / 100) + 0.35;
+        // Wenn das Handy die Erwartung nicht erfüllt
+        const diff = Math.max(0, targetExpected - phoneScore);
+
+        // Gewichtung verstärkt sich bei höherer Wichtigkeit (Punkte 1 bis 5)
+        // Stufe 1 = 0.25 Multiplikator, Stufe 5 = 1.35 Multiplikator
+        const weightMultiplier = (userPoints * 0.25) + 0.1;
 
         weightedDeviationSum += diff * weightMultiplier;
         totalWeights += weightMultiplier;
       }
 
       const avgWeightedDiff = weightedDeviationSum / (totalWeights || 1);
-      let rawScore = 100 - (avgWeightedDiff * 0.52);
+      let rawScore = 100 - (avgWeightedDiff * 0.65);
       return Math.min(99, Math.max(62, Math.round(rawScore)));
     }
 
@@ -735,7 +800,7 @@
         { time: 0, text: "Ich durchsuche das Internet...", sub: "Prüfe aktuelle Geräte ab 2024..." },
         { time: 1800, text: "Analysiere Kamerasensoren & SoCs...", sub: "Prüfe A20 Pro, TSMC Tensor G5 & Snapdragon 8 Elite..." },
         { time: 3800, text: "Gleiche Must-Have Kriterien ab...", sub: "Filtern nach IP68, 120Hz und Schnellladung..." },
-        { time: 5400, text: "Berechne optimale Match-Scores...", sub: "Erstelle die besten 10 Empfehlungen für dich..." }
+        { time: 5400, text: "Berechne optimale Match-Scores...", sub: "Erstelle die besten Empfehlungen auf Basis deiner 5-Stufen-Prioritäten..." }
       ];
 
       const interval = setInterval(() => {
@@ -898,7 +963,11 @@
         compareList = compareList.filter(id => id !== phoneId);
       } else {
         if (compareList.length >= 4) {
-          alert("Maximal 4 Smartphones können gleichzeitig verglichen werden.");
+          const notice = document.createElement('div');
+          notice.className = "fixed top-5 right-5 z-50 px-4 py-3 rounded-xl bg-rose-900/90 text-rose-100 border border-rose-500 shadow-xl text-xs font-bold transition-all";
+          notice.innerText = "Maximal 4 Smartphones können gleichzeitig verglichen werden.";
+          document.body.appendChild(notice);
+          setTimeout(() => notice.remove(), 3500);
           return;
         }
         compareList.push(phoneId);
@@ -1076,7 +1145,12 @@
         loadDatabase();
         renderAdminCustomList();
         form.reset();
-        alert(`${brand} ${model} erfolgreich gespeichert!`);
+
+        const toast = document.createElement('div');
+        toast.className = "p-3 bg-emerald-500/20 border border-emerald-400 text-emerald-300 text-xs rounded-xl mt-3";
+        toast.innerText = `${brand} ${model} erfolgreich gespeichert!`;
+        form.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
       });
     }
 
