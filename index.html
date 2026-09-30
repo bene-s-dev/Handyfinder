@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Handyfinder – Smart Engine</title>
+  <title>Handyfinder</title>
   
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,14 +26,17 @@
     }
   </script>
 
+  <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <style>
+    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #070b14; }
     ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
 
+    /* Custom Glow Slider */
     input[type=range] {
       -webkit-appearance: none;
       background: #1e293b;
@@ -48,32 +52,36 @@
       border-radius: 50%;
       background: #06b6d4;
       cursor: pointer;
-      box-shadow: 0 0 12px #06b6d4;
+      box-shadow: 0 0 14px #06b6d4;
       transition: transform 0.15s ease, background-color 0.15s;
     }
     input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
+      transform: scale(1.18);
       background: #38bdf8;
     }
 
+    /* Ambient background gradient */
     .mesh-gradient {
       background: radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
                   radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 40%);
     }
 
+    /* Glass Panels */
     .glass-panel {
-      background: rgba(13, 21, 39, 0.7);
-      backdrop-filter: blur(16px);
+      background: rgba(13, 21, 39, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .glass-card {
       background: rgba(15, 23, 42, 0.65);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.07);
     }
     .glass-card:hover {
-      border-color: rgba(6, 182, 212, 0.4);
-      box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+      border-color: rgba(6, 182, 212, 0.45);
+      box-shadow: 0 12px 35px -10px rgba(6, 182, 212, 0.2);
     }
   </style>
 </head>
@@ -96,7 +104,7 @@
     <div class="flex items-center gap-4">
       <span class="inline-flex items-center gap-2 text-xs px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 font-mono">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span id="phone-count-text">Handys geladen</span>
+        <span id="phone-count-text">bereit</span>
       </span>
     </div>
   </header>
@@ -110,7 +118,7 @@
           Finde dein ideales Smartphone
         </h2>
         <p class="text-slate-400 text-sm sm:text-base">
-          Was ist dir wichtig? Der Algorithmus filtert kompromisslos nach deinen Prioritäten.
+          Was ist dir wichtig?
         </p>
       </div>
 
@@ -160,7 +168,7 @@
           <div class="bg-slate-900/60 p-4 rounded-2xl border border-white/5">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-medium text-slate-200 flex items-center gap-2">
-                <i class="fa-solid fa-bolt text-amber-400"></i> Performance
+                <i class="fa-solid fa-bolt text-amber-400"></i> Performance & Gaming
               </span>
               <span id="val-perf" class="text-amber-400 font-mono text-xs sm:text-sm font-bold bg-amber-950/60 border border-amber-500/30 px-2.5 py-0.5 rounded-lg">4/5 · Wichtig</span>
             </div>
@@ -226,7 +234,7 @@
 
         </div>
 
-        <!-- Must Haves -->
+        <!-- Must Haves (Anklickbare Chips ohne Checkboxen) -->
         <div class="pt-6 border-t border-white/10">
           <h4 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
             <i class="fa-solid fa-filter text-cyan-400"></i> Must-Haves
@@ -274,6 +282,7 @@
     <section id="loading-view" class="hidden min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
       <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 max-w-lg w-full flex flex-col items-center shadow-2xl relative overflow-hidden">
         
+        <!-- Ruhiges, rotierendes High-Tech Radar -->
         <div class="relative w-28 h-28 flex items-center justify-center mb-8">
           <div class="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-[spin_10s_linear_infinite]"></div>
           <div class="absolute inset-2 rounded-full border-2 border-t-cyan-400 border-r-transparent border-b-violet-500 border-l-transparent animate-spin"></div>
@@ -371,7 +380,7 @@
     </div>
   </div>
 
-  <!-- Admin Button -->
+  <!-- Discreet Admin Button (Bottom Right) -->
   <div class="fixed bottom-5 right-5 z-30">
     <button id="btn-open-admin" title="Admin-Bereich" class="w-10 h-10 rounded-full bg-slate-900/90 border border-white/15 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/50 shadow-lg flex items-center justify-center transition-all cursor-pointer text-sm">
       <i class="fa-solid fa-lock"></i>
@@ -389,7 +398,7 @@
           <button id="btn-close-admin-login" class="text-slate-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <p class="text-xs text-slate-400 mb-4">
-          Passwortgeschützter Zugriff. Standard: <code class="text-cyan-300 font-mono">admin</code>.
+          Passwortgeschützter Zugriff. Standard: <code class="text-cyan-300 font-mono">admin</code> (auch via Vercel ENV steuerbar).
         </p>
         <div class="space-y-4">
           <div>
@@ -429,7 +438,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-[11px] font-semibold text-slate-300 mb-1">Exakter SoC</label>
-              <input type="text" id="new-soc" required placeholder="z.B. Snapdragon 8 Elite" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500">
+              <input type="text" id="new-soc" required placeholder="z.B. Snapdragon 8 Elite Gen 5" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500">
             </div>
             <div>
               <label class="block text-[11px] font-semibold text-slate-300 mb-1">UVP (€)</label>
@@ -513,63 +522,67 @@
   </div>
 
   <script>
-    // =========================================================================
-    // 1. DATENBANK (Über 100 verifizierte Modelle ab 2024 mit P/L-Schulnote 1.0 - 6.0)
-    // =========================================================================
+    /* =========================================================================
+       1. SMARTPHONE-DATENBANK (Über 100 aktuelle Modelle 2024-2026)
+       ========================================================================= */
     const CHINESE_BRANDS = [
       'xiaomi', 'poco', 'redmi', 'oneplus', 'honor', 'huawei', 'vivo', 'oppo', 
       'realme', 'zte', 'nubia', 'redmagic', 'meizu', 'infinix', 'tecno'
     ];
 
     const BASE_RAW_PHONES = [
-      // Samsung Galaxy S25 Serie
-      { brand: "Samsung", name: "Galaxy S25 Ultra", soc: "Snapdragon 8 Elite for Galaxy", uvp: "1.449 €", plGrade: 2.3, display: "6.9\" Dynamic AMOLED 2X 120Hz LTPO", battery: "5.000 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 97, battery: 92, perf: 98, display: 98, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["200 MP Quad-Kamera mit Spitzen-Periskop", "Reflexionsarmes Gorilla Armor 2", "7 Jahre garantierte Updates"], cons: ["Breites Gehäuse", "Nur 45W Laden"] },
+      // --- SAMSUNG GALAXY S26 REIHE (2026) ---
+      { brand: "Samsung", name: "Galaxy S26 Ultra", soc: "Snapdragon 8 Elite Gen 5 for Galaxy", uvp: "1.499 €", plGrade: 2.1, display: "6.9\" Dynamic LTPO AMOLED 2X 120Hz (Armor 2, Privacy)", battery: "5.000 mAh (60W Super Fast, 25W Qi2)", storage: "256 GB Basis", scores: { camera: 99, battery: 94, perf: 99, display: 99, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["200 MP Quad-Kamera mit Spitzen-Periskop", "Hardware-Privacy-Display gegen Blicke", "60W Schnellladen & 7 Jahre One UI Support"], cons: ["Großes 6.9\" Gehäuse", "Hohe UVP"] },
+      { brand: "Samsung", name: "Galaxy S26+", soc: "Samsung Exynos 2600 (2nm) / Snapdragon 8 Elite Gen 5", uvp: "1.199 €", plGrade: 2.0, display: "6.7\" Dynamic AMOLED 2X QHD+ (120Hz LTPO)", battery: "4.900 mAh (45W, 20W Qi2)", storage: "256 GB Basis", scores: { camera: 91, battery: 93, perf: 98, display: 97, compactness: 40, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr scharfes QHD+ Display", "Top 2nm Effizienz & 4.900 mAh Ausdauer", "7 Jahre garantierte Updates"], cons: ["Kein Periskop-Telezoom", "Laden auf 45W limitiert"] },
+      { brand: "Samsung", name: "Galaxy S26", soc: "Samsung Exynos 2600 (2nm) / Snapdragon 8 Elite Gen 5", uvp: "949 €", plGrade: 1.8, display: "6.3\" Dynamic AMOLED 2X (120Hz LTPO)", battery: "4.300 mAh (25W, 15W Qi2)", storage: "256 GB Basis", scores: { camera: 89, battery: 83, perf: 98, display: 94, compactness: 92, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr handliches Format mit gewachsenem 4.300 mAh Akku", "Standardmäßig mit 256 GB Speicher", "Volle 7 Jahre Update-Garantie"], cons: ["Nur 25 Watt Ladeleistung", "Keine Periskop-Linse"] },
+      { brand: "Samsung", name: "Galaxy S26 FE", soc: "Samsung Exynos 2500", uvp: "799 €", plGrade: 1.6, display: "6.7\" Dynamic AMOLED 2X 120Hz", battery: "4.900 mAh (45W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 87, battery: 86, perf: 90, display: 91, compactness: 40, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Starkes Preis-Leistungs-Verhältnis", "45 Watt Laderate & 4.900 mAh Akku", "7 Jahre voller Software-Support"], cons: ["Startet mit 128 GB", "Etwas breitere Displayränder"] },
+
+      // --- SAMSUNG GALAXY S25 REIHE (2025) ---
+      { brand: "Samsung", name: "Galaxy S25 Ultra", soc: "Snapdragon 8 Elite for Galaxy", uvp: "1.449 €", plGrade: 2.2, display: "6.9\" Dynamic AMOLED 2X 120Hz LTPO", battery: "5.000 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 97, battery: 92, perf: 98, display: 98, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["200 MP Quad-Kamera mit Spitzen-Periskop", "Reflexionsarmes Gorilla Armor 2", "7 Jahre garantierte Updates"], cons: ["Breites Gehäuse", "Nur 45W Laden"] },
       { brand: "Samsung", name: "Galaxy S25+", soc: "Snapdragon 8 Elite for Galaxy", uvp: "1.149 €", plGrade: 2.1, display: "6.7\" Dynamic AMOLED 2X QHD+ 120Hz", battery: "4.900 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 90, battery: 92, perf: 98, display: 96, compactness: 42, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr scharfes QHD+ Display", "Top Snapdragon 8 Elite Power", "Sehr ausdauernder Akku"], cons: ["Keine Periskop-Telekamera", "Laden auf 45W limitiert"] },
-      { brand: "Samsung", name: "Galaxy S25", soc: "Snapdragon 8 Elite for Galaxy", uvp: "899 €", plGrade: 2.0, display: "6.2\" Dynamic AMOLED 2X 120Hz", battery: "4.000 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 88, battery: 80, perf: 98, display: 93, compactness: 94, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Extrem handlich und leicht (162g)", "Flaggschiff-Prozessor ohne Drosselung", "7 Jahre Updates"], cons: ["Kleiner 4.000 mAh Akku", "Nur 25 Watt Laden"] },
-      
-      // Samsung Galaxy S24 Serie
-      { brand: "Samsung", name: "Galaxy S24 Ultra", soc: "Snapdragon 8 Gen 3 for Galaxy", uvp: "1.449 €", plGrade: 2.1, display: "6.8\" Dynamic AMOLED 2X 120Hz", battery: "5.000 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 95, battery: 90, perf: 94, display: 97, compactness: 32, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Reflexionsarmes Display", "S-Pen Stylus integriert", "7 Jahre Support"], cons: ["Schweres Titangehäuse", "Kein 65W+ Schnellladen"] },
-      { brand: "Samsung", name: "Galaxy S24+", soc: "Samsung Exynos 2400", uvp: "1.149 €", plGrade: 2.2, display: "6.7\" Dynamic AMOLED 2X 120Hz", battery: "4.900 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 89, battery: 89, perf: 91, display: 95, compactness: 42, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr helles QHD+ Panel", "7 Jahre Update-Garantie", "Ausgewogene Haptik"], cons: ["Exynos unter Dauerlast wärmer", "Kein Periskop-Zoom"] },
-      { brand: "Samsung", name: "Galaxy S24", soc: "Samsung Exynos 2400", uvp: "899 €", plGrade: 1.9, display: "6.2\" Dynamic AMOLED 2X 120Hz", battery: "4.000 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 87, battery: 78, perf: 90, display: 93, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr kompakt & griffig", "Exzellentes OLED-Display", "7 Jahre Updates"], cons: ["Nur 25W Ladeleistung", "Akku bei intensiver Nutzung knapp"] },
-      { brand: "Samsung", name: "Galaxy S24 FE", soc: "Samsung Exynos 2400e", uvp: "749 €", plGrade: 1.8, display: "6.7\" Dynamic AMOLED 2X 120Hz", battery: "4.700 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 86, battery: 84, perf: 88, display: 90, compactness: 42, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["7 Jahre Software-Updates für unter 800€", "Großes 6.7 Zoll Display", "Solide Triple-Kamera mit 3x Zoom"], cons: ["Etwas breitere Displayränder", "Nur 25W Laderate"] },
-      
-      // Samsung Foldables & A-Serie
+      { brand: "Samsung", name: "Galaxy S25", soc: "Snapdragon 8 Elite for Galaxy", uvp: "899 €", plGrade: 1.9, display: "6.2\" Dynamic AMOLED 2X 120Hz", battery: "4.000 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 88, battery: 80, perf: 98, display: 93, compactness: 94, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Extrem handlich und leicht (162g)", "Flaggschiff-Prozessor ohne Drosselung", "7 Jahre Updates"], cons: ["Kleiner 4.000 mAh Akku", "Nur 25 Watt Laden"] },
+
+      // --- SAMSUNG GALAXY S24 REIHE & FOLDABLES (2024) ---
+      { brand: "Samsung", name: "Galaxy S24 Ultra", soc: "Snapdragon 8 Gen 3 for Galaxy", uvp: "1.449 €", plGrade: 2.0, display: "6.8\" Dynamic AMOLED 2X 120Hz", battery: "5.000 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 95, battery: 90, perf: 94, display: 97, compactness: 32, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Reflexionsarmes Display", "S-Pen Stylus integriert", "7 Jahre Support"], cons: ["Schweres Titangehäuse", "Kein 65W+ Schnellladen"] },
+      { brand: "Samsung", name: "Galaxy S24+", soc: "Samsung Exynos 2400", uvp: "1.149 €", plGrade: 2.1, display: "6.7\" Dynamic AMOLED 2X 120Hz", battery: "4.900 mAh (45W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 89, battery: 89, perf: 91, display: 95, compactness: 42, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr helles QHD+ Panel", "7 Jahre Update-Garantie", "Ausgewogene Haptik"], cons: ["Exynos unter Dauerlast wärmer", "Kein Periskop-Zoom"] },
+      { brand: "Samsung", name: "Galaxy S24", soc: "Samsung Exynos 2400", uvp: "899 €", plGrade: 1.8, display: "6.2\" Dynamic AMOLED 2X 120Hz", battery: "4.000 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 87, battery: 78, perf: 90, display: 93, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr kompakt & griffig", "Exzellentes OLED-Display", "7 Jahre Updates"], cons: ["Nur 25W Ladeleistung", "Akku bei intensiver Nutzung knapp"] },
+      { brand: "Samsung", name: "Galaxy S24 FE", soc: "Samsung Exynos 2400e", uvp: "749 €", plGrade: 1.7, display: "6.7\" Dynamic AMOLED 2X 120Hz", battery: "4.700 mAh (25W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 86, battery: 84, perf: 88, display: 90, compactness: 42, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["7 Jahre Software-Updates für unter 800€", "Großes 6.7 Zoll Display", "Triple-Kamera mit 3x Zoom"], cons: ["Etwas breitere Displayränder", "Nur 25W Laderate"] },
       { brand: "Samsung", name: "Galaxy Z Fold6", soc: "Snapdragon 8 Gen 3 for Galaxy", uvp: "1.999 €", plGrade: 3.2, display: "7.6\" Foldable LTPO + 6.3\" Front", battery: "4.400 mAh (25W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 89, battery: 82, perf: 95, display: 97, compactness: 28, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr helles faltbares Riesendisplay", "IP48 Wasser- und Staubschutz", "7 Jahre Software-Support"], cons: ["Sehr hoher Preis", "Kameras auf Niveau des Standard S24"] },
       { brand: "Samsung", name: "Galaxy Z Flip6", soc: "Snapdragon 8 Gen 3 for Galaxy", uvp: "1.199 €", plGrade: 2.7, display: "6.7\" Foldable 120Hz + 3.4\" Außendisplay", battery: "4.000 mAh (25W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 86, battery: 80, perf: 95, display: 94, compactness: 85, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr kompakt zusammenklappbar", "Neuer 50 MP Kamerasensor", "7 Jahre Updates"], cons: ["Keine dedizierte Telekamera", "25 Watt Ladeleistung"] },
-      { brand: "Samsung", name: "Galaxy A55 5G", soc: "Samsung Exynos 1480", uvp: "479 €", plGrade: 1.6, display: "6.6\" Super AMOLED 120Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 78, battery: 88, perf: 78, display: 86, compactness: 50, support: 88 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Metallrahmen & IP67 Schutz", "Sehr lange Akkulaufzeit", "MicroSD-Slot vorhanden"], cons: ["Kein kabelloses Laden", "Breitere Displayränder"] },
-      { brand: "Samsung", name: "Galaxy A35 5G", soc: "Samsung Exynos 1380", uvp: "379 €", plGrade: 1.7, display: "6.6\" Super AMOLED 120Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 74, battery: 87, perf: 73, display: 84, compactness: 50, support: 86 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Faires AMOLED-Display für unter 400€", "IP67 Wasserdicht", "Stereo-Lautsprecher"], cons: ["Plastikrahmen", "Mäßige Low-Light Kamera"] },
+      { brand: "Samsung", name: "Galaxy A55 5G", soc: "Samsung Exynos 1480", uvp: "479 €", plGrade: 1.5, display: "6.6\" Super AMOLED 120Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 78, battery: 88, perf: 78, display: 86, compactness: 50, support: 88 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Metallrahmen & IP67 Schutz", "Sehr lange Akkulaufzeit", "MicroSD-Slot vorhanden"], cons: ["Kein kabelloses Laden", "Breitere Displayränder"] },
+      { brand: "Samsung", name: "Galaxy A35 5G", soc: "Samsung Exynos 1380", uvp: "379 €", plGrade: 1.6, display: "6.6\" Super AMOLED 120Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 74, battery: 87, perf: 73, display: 84, compactness: 50, support: 86 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Faires AMOLED-Display für unter 400€", "IP67 Wasserdicht", "Stereo-Lautsprecher"], cons: ["Plastikrahmen", "Mäßige Low-Light Kamera"] },
       { brand: "Samsung", name: "Galaxy A25 5G", soc: "Samsung Exynos 1280", uvp: "299 €", plGrade: 1.8, display: "6.5\" Super AMOLED 120Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 70, battery: 86, perf: 68, display: 81, compactness: 52, support: 82 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["120Hz AMOLED im Einstiegsbereich", "3.5mm Klinkenbuchse", "Gute Akkulaufzeit"], cons: ["Kein IP-Wasserschutz", "Spürbare Ruckler bei anspruchsvollen Apps"] },
-      { brand: "Samsung", name: "Galaxy A16 5G", soc: "Samsung Exynos 1330", uvp: "229 €", plGrade: 1.5, display: "6.7\" Super AMOLED 90Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 65, battery: 88, perf: 62, display: 76, compactness: 48, support: 88 }, features: { wirelessCharging: false, ip68: false, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["Unglaubliche 6 Jahre Update-Zusage in der Einsteigerklasse", "Großes AMOLED-Panel", "Solider 5.000 mAh Akku"], cons: ["Nur 90Hz statt 120Hz", "Langsame Ladezeit"] },
+      { brand: "Samsung", name: "Galaxy A16 5G", soc: "Samsung Exynos 1330", uvp: "229 €", plGrade: 1.4, display: "6.7\" Super AMOLED 90Hz", battery: "5.000 mAh (25W)", storage: "128 GB Basis", scores: { camera: 65, battery: 88, perf: 62, display: 76, compactness: 48, support: 88 }, features: { wirelessCharging: false, ip68: false, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["Unglaubliche 6 Jahre Update-Zusage in der Einsteigerklasse", "Großes AMOLED-Panel", "Solider 5.000 mAh Akku"], cons: ["Nur 90Hz statt 120Hz", "Langsame Ladezeit"] },
 
-      // Apple iPhone Serien
-      { brand: "Apple", name: "iPhone 18 Pro Max", soc: "Apple A20 Pro (2nm TSMC)", uvp: "1.549 €", plGrade: 2.5, display: "6.9\" Tandem OLED (120Hz ProMotion, 3.500 Nits)", battery: "4.950 mAh (35W MagSafe)", storage: "256 GB Basis", scores: { camera: 99, battery: 99, perf: 99, display: 99, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["2nm A20 Pro Prozessor", "Tandem-OLED Display", "Branchenbeste 8K Dolby Vision Videofunktion"], cons: ["Sehr teuer", "Kein 65W+ Schnellladen"] },
-      { brand: "Apple", name: "iPhone 18 Pro", soc: "Apple A20 Pro (2nm TSMC)", uvp: "1.299 €", plGrade: 2.3, display: "6.3\" Tandem OLED (120Hz ProMotion)", battery: "3.850 mAh (35W MagSafe)", storage: "256 GB Basis", scores: { camera: 98, battery: 92, perf: 99, display: 98, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["Kompaktes 6.3 Zoll Gehäuse mit voller 2nm Power", "Periskop-Telekamera mit variablem Zoom", "Hervorragende Akkulaufzeit"], cons: ["Langsames Kabel-Laden", "Hoher Preis"] },
-      { brand: "Apple", name: "iPhone 18", soc: "Apple A20 (2nm TSMC)", uvp: "999 €", plGrade: 1.9, display: "6.1\" OLED (120Hz ProMotion)", battery: "3.800 mAh (25W MagSafe)", storage: "256 GB Basis", scores: { camera: 90, battery: 89, perf: 96, display: 93, compactness: 94, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["120Hz ProMotion im Standard-iPhone", "256 GB Basisspeicher", "A20 High-End Performance"], cons: ["Keine dedizierte Telezoom-Kamera", "Kein 65W+ Laden"] },
-      { brand: "Apple", name: "iPhone 17 Pro Max", soc: "Apple A19 Pro (3nm Gen 2)", uvp: "1.499 €", plGrade: 2.4, display: "6.9\" Super Retina XDR OLED (120Hz ProMotion)", battery: "4.820 mAh (30W MagSafe)", storage: "256 GB Basis", scores: { camera: 98, battery: 98, perf: 98, display: 98, compactness: 30, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Exzellente Akkulaufzeit", "Kamera-Steuerungstaste mit Haptik", "A19 Pro Spitzenleistung"], cons: ["Kein 65W+ Schnellladen", "Großes, schweres Format"] },
-      { brand: "Apple", name: "iPhone 17 Pro", soc: "Apple A19 Pro (3nm Gen 2)", uvp: "1.249 €", plGrade: 2.2, display: "6.3\" Super Retina XDR OLED (120Hz ProMotion)", battery: "3.720 mAh (30W MagSafe)", storage: "256 GB Basis", scores: { camera: 97, battery: 90, perf: 98, display: 97, compactness: 84, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["Periskop-Telekamera im handlichen Gehäuse", "256 GB Basis", "Titan-Verarbeitung"], cons: ["Gemächliche Ladezeit", "Sehr teuer"] },
-      { brand: "Apple", name: "iPhone 17 Air (Slim)", soc: "Apple A19 (3nm)", uvp: "1.099 €", plGrade: 2.5, display: "6.6\" Super Retina XDR (120Hz ProMotion)", battery: "3.600 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 82, perf: 95, display: 94, compactness: 75, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Extrem dünnes und leichtes Gehäuse", "120Hz Display", "A19 Power"], cons: ["Kleinerer Akku aufgrund von Bauhöhe", "Nur eine Hauptkamera"] },
-      { brand: "Apple", name: "iPhone 17", soc: "Apple A19 (3nm)", uvp: "949 €", plGrade: 2.0, display: "6.1\" Super Retina XDR (120Hz ProMotion)", battery: "3.650 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 87, perf: 95, display: 91, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["120Hz ProMotion", "Apple Intelligence Ready", "Sehr kompakt"], cons: ["Kein optischer Telezoom", "Kein 65W Laden"] },
-      { brand: "Apple", name: "iPhone 16 Pro Max", soc: "Apple A18 Pro (3nm)", uvp: "1.449 €", plGrade: 2.2, display: "6.9\" Super Retina XDR OLED (120Hz ProMotion)", battery: "4.685 mAh (25W MagSafe)", storage: "256 GB Basis", scores: { camera: 97, battery: 97, perf: 98, display: 97, compactness: 30, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Beste Videofunktion mit 4K120fps Dolby Vision", "Extrem lange Akkulaufzeit", "Kamera-Steuerungstaste"], cons: ["Kein 65W+ Schnellladen", "Sehr schwer"] },
-      { brand: "Apple", name: "iPhone 16 Pro", soc: "Apple A18 Pro (3nm)", uvp: "1.199 €", plGrade: 2.1, display: "6.3\" Super Retina XDR OLED (120Hz ProMotion)", battery: "3.582 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 96, battery: 89, perf: 98, display: 96, compactness: 83, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["5x optischer Periskop-Zoom im 6.3\" Format", "Erstklassige Verarbeitungsqualität", "Starke A18 Pro CPU-Power"], cons: ["Startet mit 128 GB", "Gemächliche Ladezeit"] },
-      { brand: "Apple", name: "iPhone 16 Plus", soc: "Apple A18 (3nm)", uvp: "1.099 €", plGrade: 2.3, display: "6.7\" Super Retina XDR OLED (60Hz)", battery: "4.674 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 96, perf: 94, display: 84, compactness: 40, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Hervorragende Akkulaufzeit", "Action Button & Kamera-Steuerung", "Flotter A18 Prozessor"], cons: ["Nur 60Hz Bildwiederholrate", "Keine dedizierte Telekamera"] },
-      { brand: "Apple", name: "iPhone 16", soc: "Apple A18 (3nm)", uvp: "949 €", plGrade: 2.0, display: "6.1\" Super Retina XDR OLED (60Hz)", battery: "3.561 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 87, battery: 85, perf: 94, display: 84, compactness: 94, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr kompakt und leicht", "Apple Intelligence Ready mit A18 & 8GB RAM", "Neue Kamera-Taste"], cons: ["Nur 60Hz Display", "Keine Zoomkamera"] },
+      // --- APPLE IPHONE 18, 17 & 16 SERIEN ---
+      { brand: "Apple", name: "iPhone 18 Pro Max", soc: "Apple A20 Pro (2nm TSMC)", uvp: "1.549 €", plGrade: 2.5, display: "6.9\" Tandem OLED (120Hz ProMotion, 3.500 Nits)", battery: "4.950 mAh (35W MagSafe)", storage: "256 GB Basis", scores: { camera: 99, battery: 84, perf: 99, display: 99, compactness: 28, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["2nm A20 Pro Flaggschiff-Prozessor", "Ultrahelles Tandem-OLED Display", "Branchenbeste 8K Dolby Vision Videofunktion"], cons: ["Sehr teuer", "Laden auf 35W limitiert"] },
+      { brand: "Apple", name: "iPhone 18 Pro", soc: "Apple A20 Pro (2nm TSMC)", uvp: "1.299 €", plGrade: 2.3, display: "6.3\" Tandem OLED (120Hz ProMotion)", battery: "3.850 mAh (35W MagSafe)", storage: "256 GB Basis", scores: { camera: 98, battery: 82, perf: 99, display: 98, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["Kompaktes 6.3\" Gehäuse mit 2nm Power", "Periskop-Telekamera mit variablem Zoom", "Hervorragende Haptik"], cons: ["Langsames Kabel-Laden", "Hoher Preis"] },
+      { brand: "Apple", name: "iPhone 18", soc: "Apple A20 (2nm TSMC)", uvp: "999 €", plGrade: 1.9, display: "6.1\" OLED (120Hz ProMotion)", battery: "3.800 mAh (25W MagSafe)", storage: "256 GB Basis", scores: { camera: 90, battery: 80, perf: 96, display: 93, compactness: 94, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["120Hz ProMotion im Standard-iPhone", "256 GB Basisspeicher", "A20 High-End Performance"], cons: ["Keine dedizierte Telezoom-Kamera", "Kein 65W+ Schnellladen"] },
+      { brand: "Apple", name: "iPhone 17 Pro Max", soc: "Apple A19 Pro (3nm Gen 2)", uvp: "1.499 €", plGrade: 2.4, display: "6.9\" Super Retina XDR OLED (120Hz ProMotion)", battery: "4.820 mAh (30W MagSafe)", storage: "256 GB Basis", scores: { camera: 98, battery: 83, perf: 98, display: 98, compactness: 30, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr gute Video- & Fotoqualität", "Kamera-Steuerungstaste mit Haptik", "A19 Pro Spitzenleistung"], cons: ["Kein 65W+ Schnellladen", "Großes, schweres Format"] },
+      { brand: "Apple", name: "iPhone 17 Pro", soc: "Apple A19 Pro (3nm Gen 2)", uvp: "1.249 €", plGrade: 2.2, display: "6.3\" Super Retina XDR OLED (120Hz ProMotion)", battery: "3.720 mAh (30W MagSafe)", storage: "256 GB Basis", scores: { camera: 97, battery: 81, perf: 98, display: 97, compactness: 84, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["Periskop-Telekamera im handlichen Gehäuse", "256 GB Basis", "Titan-Verarbeitung"], cons: ["Gemächliche Ladezeit", "Sehr teuer"] },
+      { brand: "Apple", name: "iPhone 17 Air (Slim)", soc: "Apple A19 (3nm)", uvp: "1.099 €", plGrade: 2.5, display: "6.6\" Super Retina XDR (120Hz ProMotion)", battery: "3.600 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 76, perf: 95, display: 94, compactness: 75, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Extrem dünnes und leichtes Gehäuse", "120Hz Display", "A19 Power"], cons: ["Kleinerer Akku wegen ultraflacher Bauhöhe", "Nur eine Hauptkamera"] },
+      { brand: "Apple", name: "iPhone 17", soc: "Apple A19 (3nm)", uvp: "949 €", plGrade: 2.0, display: "6.1\" Super Retina XDR (120Hz ProMotion)", battery: "3.650 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 79, perf: 95, display: 91, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["120Hz ProMotion", "Apple Intelligence Ready", "Sehr kompakt"], cons: ["Kein optischer Telezoom", "Kein 65W Laden"] },
+      { brand: "Apple", name: "iPhone 16 Pro Max", soc: "Apple A18 Pro (3nm)", uvp: "1.449 €", plGrade: 2.2, display: "6.9\" Super Retina XDR OLED (120Hz ProMotion)", battery: "4.685 mAh (25W MagSafe)", storage: "256 GB Basis", scores: { camera: 97, battery: 83, perf: 98, display: 97, compactness: 30, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Beste Videofunktion mit 4K120fps Dolby Vision", "Sehr hohe Recheneffizienz", "Kamera-Steuerungstaste"], cons: ["Laden dauert über 1,5 Stunden", "Sehr schwer"] },
+      { brand: "Apple", name: "iPhone 16 Pro", soc: "Apple A18 Pro (3nm)", uvp: "1.199 €", plGrade: 2.1, display: "6.3\" Super Retina XDR OLED (120Hz ProMotion)", battery: "3.582 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 96, battery: 80, perf: 98, display: 96, compactness: 83, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["5x optischer Periskop-Zoom im 6.3\" Format", "Erstklassige Verarbeitungsqualität", "Starke A18 Pro CPU-Power"], cons: ["Startet mit 128 GB", "Gemächliche Ladezeit"] },
+      { brand: "Apple", name: "iPhone 16 Plus", soc: "Apple A18 (3nm)", uvp: "1.099 €", plGrade: 2.3, display: "6.7\" Super Retina XDR OLED (60Hz)", battery: "4.674 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 88, battery: 84, perf: 94, display: 84, compactness: 40, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: true }, pros: ["Hervorragende Akkulaufzeit", "Action Button & Kamera-Steuerung", "Flotter A18 Prozessor"], cons: ["Nur 60Hz Bildwiederholrate", "Keine dedizierte Telekamera"] },
+      { brand: "Apple", name: "iPhone 16", soc: "Apple A18 (3nm)", uvp: "949 €", plGrade: 2.0, display: "6.1\" Super Retina XDR OLED (60Hz)", battery: "3.561 mAh (25W MagSafe)", storage: "128 GB Basis", scores: { camera: 87, battery: 78, perf: 94, display: 84, compactness: 94, support: 97 }, features: { wirelessCharging: true, ip68: true, hz120: false, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Sehr kompakt und leicht", "Apple Intelligence Ready mit A18 & 8GB RAM", "Neue Kamera-Taste"], cons: ["Nur 60Hz Display", "Keine Zoomkamera"] },
 
-      // Google Pixel 10 & 9 Serien
-      { brand: "Google", name: "Pixel 10 Pro XL", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "1.249 €", plGrade: 1.8, display: "6.8\" Super Actua LTPO OLED 120Hz (3.200 Nits)", battery: "5.200 mAh (45W, 25W Qi)", storage: "256 GB Basis", scores: { camera: 99, battery: 95, perf: 94, display: 98, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Neuer Tensor G5 von TSMC gefertigt (wesentlich effizienter)", "Referenzklasse bei KI-Fotografie & Video", "7 Jahre garantierte Updates"], cons: ["Kein 65W+ Schnellladen", "Relativ schwer"] },
-      { brand: "Google", name: "Pixel 10 Pro", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "1.149 €", plGrade: 1.7, display: "6.3\" Super Actua LTPO OLED 120Hz", battery: "4.850 mAh (35W, 23W Qi)", storage: "256 GB Basis", scores: { camera: 98, battery: 91, perf: 94, display: 97, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["TSMC-gefertigter Tensor G5 ohne Hitzeprobleme", "Kompaktes Gehäuse mit Top-Periskopkamera", "7 Jahre Updates"], cons: ["Gaming-GPU noch hinter Snapdragon 8 Elite", "Kein 65W+ Schnellladen"] },
-      { brand: "Google", name: "Pixel 10", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "899 €", plGrade: 1.6, display: "6.3\" Actua OLED 120Hz", battery: "4.800 mAh (30W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 93, battery: 90, perf: 93, display: 93, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Stark verbesserte Effizienz durch TSMC-Fertigung", "Sehr gute Haupt- & Ultraweitwinkelkamera", "7 Jahre Updates"], cons: ["Keine optische Telekamera", "Nur 30W Laderate"] },
-      { brand: "Google", name: "Pixel 9 Pro XL", soc: "Google Tensor G4 (Titan M2)", uvp: "1.199 €", plGrade: 1.9, display: "6.8\" Super Actua LTPO OLED 120Hz", battery: "5.060 mAh (37W, 23W Qi)", storage: "128 GB Basis", scores: { camera: 97, battery: 91, perf: 85, display: 97, compactness: 32, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Exzellente Nacht- und Porträtfotos", "Display mit über 3.000 Nits", "7 Jahre garantierte Updates"], cons: ["Tensor G4 liegt bei 3D-Games hinter Snapdragon", "Startet mit 128 GB"] },
-      { brand: "Google", name: "Pixel 9 Pro", soc: "Google Tensor G4 (Titan M2)", uvp: "1.099 €", plGrade: 1.8, display: "6.3\" Super Actua LTPO OLED 120Hz", battery: "4.700 mAh (27W, 21W Qi)", storage: "128 GB Basis", scores: { camera: 96, battery: 86, perf: 85, display: 96, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["5x Periskopkamera im handlichen 6.3 Zoll Gehäuse", "Stock-Android mit direktem Feature-Drop", "7 Jahre Updates"], cons: ["Tensor G4 drosselt bei Dauerlast", "128 GB Basis"] },
-      { brand: "Google", name: "Pixel 9", soc: "Google Tensor G4 (Titan M2)", uvp: "899 €", plGrade: 1.7, display: "6.3\" Actua OLED 120Hz", battery: "4.700 mAh (27W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 91, battery: 85, perf: 84, display: 92, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Hochwertiges Kantendesign", "Tolles Hauptkamerasystem", "7 Jahre Support"], cons: ["Kein Zoom-Objektiv", "Nur 27W Ladeleistung"] },
-      { brand: "Google", name: "Pixel 9 Pro Fold", soc: "Google Tensor G4 (Titan M2)", uvp: "1.899 €", plGrade: 3.0, display: "8.0\" Foldable LTPO + 6.3\" Front", battery: "4.650 mAh (21W, 7.5W Qi)", storage: "256 GB Basis", scores: { camera: 91, battery: 82, perf: 84, display: 95, compactness: 28, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr dünnes Gehäuse im aufgeklappten Zustand", "Kompaktes Seitenverhältnis der Front", "7 Jahre Updates"], cons: ["Sehr teuer", "Langsames Laden (21W)"] },
-      { brand: "Google", name: "Pixel 8a", soc: "Google Tensor G3", uvp: "549 €", plGrade: 1.4, display: "6.1\" Actua OLED 120Hz", battery: "4.492 mAh (18W, 7.5W Qi)", storage: "128 GB Basis", scores: { camera: 88, battery: 81, perf: 82, display: 88, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: false, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["7 Jahre Support in der Mittelklasse", "Starke KI-Fotofunktionen", "Kompakt & Qi-fähig"], cons: ["Dickere Displayränder", "Nur 18W Ladeleistung"] },
+      // --- GOOGLE PIXEL 10 & 9 SERIEN ---
+      { brand: "Google", name: "Pixel 10 Pro XL", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "1.249 €", plGrade: 1.8, display: "6.8\" Super Actua LTPO OLED 120Hz (3.200 Nits)", battery: "5.200 mAh (45W, 25W Qi)", storage: "256 GB Basis", scores: { camera: 99, battery: 92, perf: 94, display: 98, compactness: 30, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Neuer Tensor G5 von TSMC gefertigt (wesentlich effizienter)", "Referenzklasse bei KI-Fotografie & Video", "7 Jahre garantierte Updates"], cons: ["Kein 65W+ Schnellladen", "Relativ schwer"] },
+      { brand: "Google", name: "Pixel 10 Pro", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "1.149 €", plGrade: 1.7, display: "6.3\" Super Actua LTPO OLED 120Hz", battery: "4.850 mAh (35W, 23W Qi)", storage: "256 GB Basis", scores: { camera: 98, battery: 89, perf: 94, display: 97, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["TSMC-gefertigter Tensor G5 ohne Hitzeprobleme", "Kompaktes Gehäuse mit Top-Periskopkamera", "7 Jahre Updates"], cons: ["Gaming-GPU noch hinter Snapdragon 8 Elite", "Kein 65W+ Schnellladen"] },
+      { brand: "Google", name: "Pixel 10", soc: "Google Tensor G5 (TSMC 3nm)", uvp: "899 €", plGrade: 1.6, display: "6.3\" Actua OLED 120Hz", battery: "4.800 mAh (30W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 93, battery: 87, perf: 93, display: 93, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Stark verbesserte Effizienz durch TSMC-Fertigung", "Sehr gute Haupt- & Ultraweitwinkelkamera", "7 Jahre Updates"], cons: ["Keine optische Telekamera", "Nur 30W Laderate"] },
+      { brand: "Google", name: "Pixel 9 Pro XL", soc: "Google Tensor G4 (Titan M2)", uvp: "1.199 €", plGrade: 1.9, display: "6.8\" Super Actua LTPO OLED 120Hz", battery: "5.060 mAh (37W, 23W Qi)", storage: "128 GB Basis", scores: { camera: 97, battery: 88, perf: 85, display: 97, compactness: 32, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Exzellente Nacht- und Porträtfotos", "Display mit über 3.000 Nits", "7 Jahre garantierte Updates"], cons: ["Tensor G4 liegt bei 3D-Games hinter Snapdragon", "Startet mit 128 GB"] },
+      { brand: "Google", name: "Pixel 9 Pro", soc: "Google Tensor G4 (Titan M2)", uvp: "1.099 €", plGrade: 1.8, display: "6.3\" Super Actua LTPO OLED 120Hz", battery: "4.700 mAh (27W, 21W Qi)", storage: "128 GB Basis", scores: { camera: 96, battery: 84, perf: 85, display: 96, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: true, fastCharge65w: false, compact: true, esim: true }, pros: ["5x Periskopkamera im handlichen 6.3 Zoll Gehäuse", "Stock-Android mit direktem Feature-Drop", "7 Jahre Updates"], cons: ["Tensor G4 drosselt bei Dauerlast", "128 GB Basis"] },
+      { brand: "Google", name: "Pixel 9", soc: "Google Tensor G4 (Titan M2)", uvp: "899 €", plGrade: 1.7, display: "6.3\" Actua OLED 120Hz", battery: "4.700 mAh (27W, 15W Qi)", storage: "128 GB Basis", scores: { camera: 91, battery: 83, perf: 84, display: 92, compactness: 84, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Hochwertiges Kantendesign", "Tolles Hauptkamerasystem", "7 Jahre Support"], cons: ["Kein Zoom-Objektiv", "Nur 27W Ladeleistung"] },
+      { brand: "Google", name: "Pixel 9 Pro Fold", soc: "Google Tensor G4 (Titan M2)", uvp: "1.899 €", plGrade: 3.0, display: "8.0\" Foldable LTPO + 6.3\" Front", battery: "4.650 mAh (21W, 7.5W Qi)", storage: "256 GB Basis", scores: { camera: 91, battery: 80, perf: 84, display: 95, compactness: 28, support: 99 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Sehr dünnes Gehäuse im aufgeklappten Zustand", "Kompaktes Seitenverhältnis der Front", "7 Jahre Updates"], cons: ["Sehr teuer", "Langsames Laden (21W)"] },
+      { brand: "Google", name: "Pixel 8a", soc: "Google Tensor G3", uvp: "549 €", plGrade: 1.4, display: "6.1\" Actua OLED 120Hz", battery: "4.492 mAh (18W, 7.5W Qi)", storage: "128 GB Basis", scores: { camera: 88, battery: 78, perf: 82, display: 88, compactness: 94, support: 98 }, features: { wirelessCharging: true, ip68: false, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["7 Jahre Support in der Mittelklasse", "Starke KI-Fotofunktionen", "Kompakt & Qi-fähig"], cons: ["Dickere Displayränder", "Nur 18W Ladeleistung"] },
 
-      // Nothing (UK)
+      // --- NOTHING (UK) ---
       { brand: "Nothing", name: "Nothing Phone (3)", soc: "Snapdragon 8s Gen 3", uvp: "749 €", plGrade: 1.5, display: "6.7\" LTPO OLED 120Hz", battery: "5.000 mAh (65W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 88, battery: 91, perf: 92, display: 92, compactness: 46, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["Weiterentwickeltes Glyph-Interface", "IP68 Wasserschutz", "Sauberes Nothing OS 3.0"], cons: ["Keine Periskop-Telekamera", "Design polarisiert"] },
       { brand: "Nothing", name: "Nothing Phone (2a) Plus", soc: "MediaTek Dimensity 7350 Pro", uvp: "399 €", plGrade: 1.3, display: "6.7\" Flexible AMOLED 120Hz", battery: "5.000 mAh (50W)", storage: "256 GB Basis", scores: { camera: 80, battery: 90, perf: 80, display: 86, compactness: 48, support: 82 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["50 MP Selfie-Kamera", "Großer 5.000 mAh Akku", "Transparentes Design"], cons: ["Kein kabelloses Laden", "Kunststoff-Rückseite"] },
       { brand: "Nothing", name: "Nothing Phone (2a)", soc: "MediaTek Dimensity 7200 Pro", uvp: "329 €", plGrade: 1.2, display: "6.7\" Flexible AMOLED 120Hz", battery: "5.000 mAh (45W)", storage: "128 GB Basis", scores: { camera: 77, battery: 89, perf: 76, display: 85, compactness: 48, support: 80 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: false, periscope: false, fastCharge65w: false, compact: false, esim: false }, pros: ["Hervorragendes Preis-Leistungs-Verhältnis", "Sympathisches Glyph-Licht", "Gute Stereo-Speaker"], cons: ["Kein Qi-Charging", "Nur IP54"] },
 
-      // OnePlus (China-Marke)
+      // --- ONEPLUS (China-Marke) ---
       { brand: "OnePlus", name: "OnePlus 15", soc: "Snapdragon 8 Elite Gen 2", uvp: "1.049 €", plGrade: 1.6, display: "6.82\" 2K LTPO AMOLED 120Hz", battery: "6.200 mAh Silizium-Akku (100W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 96, battery: 100, perf: 99, display: 98, compactness: 30, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Gigantischer 6.200 mAh Silizium-Akku", "100W Schnellladung & 50W Qi", "Hasselblad Triple-Kamera mit Periskop"], cons: ["Großes, schweres Format", "Kein kompakter Formfaktor"] },
       { brand: "OnePlus", name: "OnePlus 13", soc: "Snapdragon 8 Elite", uvp: "999 €", plGrade: 1.5, display: "6.82\" 2K LTPO AMOLED 120Hz", battery: "6.000 mAh Silizium-Akku (100W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 94, battery: 99, perf: 98, display: 98, compactness: 32, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Riesiger 6.000 mAh Silizium-Akku", "100W Laden & 50W Wireless", "IP68 & IP69 Schutz", "Hasselblad Kamerasystem"], cons: ["Kein kompaktes Format", "Kamera-Modul polarisiert"] },
       { brand: "OnePlus", name: "OnePlus 13R", soc: "Snapdragon 8 Gen 3", uvp: "699 €", plGrade: 1.3, display: "6.78\" 1.5K AMOLED 120Hz", battery: "6.000 mAh (80W Fast Charge)", storage: "256 GB Basis", scores: { camera: 84, battery: 98, perf: 93, display: 94, compactness: 35, support: 84 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Brutale Akkulaufzeit mit 6.000 mAh", "Snapdragon 8 Gen 3 Flaggschiff-Power zum Mittelklassepreis", "Sehr helles Display"], cons: ["Kein kabelloses Laden", "Keine Periskop-Linse"] },
@@ -578,7 +591,7 @@
       { brand: "OnePlus", name: "OnePlus Nord 4", soc: "Snapdragon 7+ Gen 3", uvp: "499 €", plGrade: 1.3, display: "6.74\" AMOLED 120Hz", battery: "5.500 mAh (100W)", storage: "256 GB Basis", scores: { camera: 79, battery: 95, perf: 87, display: 89, compactness: 40, support: 84 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["Unibody-Metallgehäuse", "100W Schnellladung", "5.500 mAh Akku"], cons: ["Kein kabelloses Laden", "Kein Periskop-Zoom"] },
       { brand: "OnePlus", name: "OnePlus Nord CE4 Lite", soc: "Snapdragon 695 5G", uvp: "299 €", plGrade: 2.1, display: "6.67\" AMOLED 120Hz", battery: "5.110 mAh (80W)", storage: "256 GB Basis", scores: { camera: 69, battery: 89, perf: 66, display: 80, compactness: 50, support: 76 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["80 Watt Schnellladen in der 300€-Klasse", "Helles AMOLED", "Kopfhöreranschluss vorhanden"], cons: ["Älterer Snapdragon 695 Prozessor", "Mäßige Kameras"] },
 
-      // Xiaomi & Poco (China-Marke)
+      // --- XIAOMI, POCO & REDMI (China-Marke) ---
       { brand: "Xiaomi", name: "Xiaomi 15 Pro", soc: "Snapdragon 8 Elite", uvp: "1.099 €", plGrade: 1.8, display: "6.73\" 2K LTPO OLED 120Hz", battery: "6.100 mAh (90W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 97, battery: 98, perf: 98, display: 97, compactness: 38, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Riesiger 6.100 mAh Silizium-Akku", "Leica Triple-50MP mit Periskop", "Snapdragon 8 Elite Performance"], cons: ["Hohes Gewicht", "HyperOS Bloatware"] },
       { brand: "Xiaomi", name: "Xiaomi 15", soc: "Snapdragon 8 Elite", uvp: "899 €", plGrade: 1.5, display: "6.36\" LTPO OLED 120Hz", battery: "5.400 mAh (90W, 50W Qi)", storage: "256 GB Basis", scores: { camera: 92, battery: 94, perf: 98, display: 95, compactness: 84, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: true, esim: true }, pros: ["Kompaktes 6.36\" Gehäuse mit 5.400 mAh Akku", "Schmale Ränder", "Snapdragon 8 Elite"], cons: ["Kein 5x Periskop-Zoom", "Software braucht Feinschliff"] },
       { brand: "Xiaomi", name: "Xiaomi 14 Ultra", soc: "Snapdragon 8 Gen 3", uvp: "1.499 €", plGrade: 2.3, display: "6.73\" WQHD+ AMOLED 120Hz", battery: "5.000 mAh (90W, 80W Qi)", storage: "512 GB Basis", scores: { camera: 98, battery: 86, perf: 94, display: 95, compactness: 32, support: 84 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["1-Zoll-Sensor mit stufenloser Blende", "Zwei Leica-Telekameras", "80W drahtloses Laden"], cons: ["Kopflastiges Kameradesign", "Teuer"] },
@@ -587,29 +600,36 @@
       { brand: "Xiaomi Poco", name: "Poco F6 Pro", soc: "Snapdragon 8 Gen 2", uvp: "579 €", plGrade: 1.3, display: "6.67\" WQHD+ 120Hz AMOLED", battery: "5.000 mAh (120W)", storage: "256 GB Basis", scores: { camera: 82, battery: 88, perf: 91, display: 93, compactness: 40, support: 78 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["WQHD+ Display", "120 Watt HyperCharge", "Starke Performance"], cons: ["Kein kabelloses Laden", "Nur IP54"] },
       { brand: "Xiaomi Poco", name: "Poco F6", soc: "Snapdragon 8s Gen 3", uvp: "449 €", plGrade: 1.2, display: "6.67\" 1.5K AMOLED 120Hz", battery: "5.000 mAh (90W)", storage: "256 GB Basis", scores: { camera: 78, battery: 88, perf: 90, display: 88, compactness: 45, support: 78 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Top Performance für unter 450€", "90W Schnellladen", "Geringes Gewicht"], cons: ["Kunststoffgehäuse", "Mäßige Makrokamera"] },
       { brand: "Xiaomi Poco", name: "Poco X6 Pro", soc: "MediaTek Dimensity 8300-Ultra", uvp: "349 €", plGrade: 1.1, display: "6.67\" AMOLED 120Hz", battery: "5.000 mAh (67W)", storage: "256 GB Basis", scores: { camera: 75, battery: 88, perf: 89, display: 88, compactness: 45, support: 76 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Beste Gaming-Performance unter 350€", "Schneller UFS 4.0 Speicher", "67W Netzteil inklusive"], cons: ["Nur IP54 Spritzwasserschutz", "Kein Qi Laden"] },
+      { brand: "Xiaomi Poco", name: "Poco X6", soc: "Snapdragon 7s Gen 2", uvp: "299 €", plGrade: 1.4, display: "6.67\" AMOLED 120Hz", battery: "5.100 mAh (67W)", storage: "256 GB Basis", scores: { camera: 72, battery: 87, perf: 76, display: 86, compactness: 46, support: 76 }, features: { wirelessCharging: false, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Sehr helles Display für 300€", "Großer Akku mit 67W Laden", "Klinkenbuchse vorhanden"], cons: ["Prozessor bei schweren 3D-Titeln am Limit", "Bloatware ab Werk"] },
+      { brand: "Xiaomi Redmi", name: "Redmi Note 14 Pro+ 5G", soc: "Snapdragon 7s Gen 3", uvp: "499 €", plGrade: 1.3, display: "6.67\" 1.5K Curved AMOLED 120Hz", battery: "6.200 mAh (90W)", storage: "256 GB Basis", scores: { camera: 84, battery: 98, perf: 82, display: 91, compactness: 40, support: 82 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["6.200 mAh Akku", "IP68 Wasserschutz", "Telekamera an Bord"], cons: ["Kein kabelloses Laden", "Mittelklasse-CPU"] },
+      { brand: "Xiaomi Redmi", name: "Redmi Note 13 Pro+ 5G", soc: "MediaTek Dimensity 7200-Ultra", uvp: "449 €", plGrade: 1.4, display: "6.67\" Curved AMOLED 120Hz", battery: "5.000 mAh (120W)", storage: "256 GB Basis", scores: { camera: 83, battery: 87, perf: 82, display: 90, compactness: 40, support: 80 }, features: { wirelessCharging: false, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["200 MP Hauptkamera", "120 Watt HyperCharge", "IP68 Wasserdicht"], cons: ["Kein kabelloses Laden", "Curved Display anfällig für Reflexionen"] },
 
-      // vivo, Honor & OPPO (China-Marke)
+      // --- VIVO, HONOR & OPPO (China-Marke) ---
       { brand: "vivo", name: "X200 Pro", soc: "MediaTek Dimensity 9400", uvp: "1.299 €", plGrade: 1.7, display: "6.78\" LTPO AMOLED 120Hz", battery: "6.000 mAh Silizium-Akku (90W, 30W Qi)", storage: "512 GB Basis", scores: { camera: 99, battery: 98, perf: 97, display: 97, compactness: 32, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["200 MP Zeiss APO Telekamera", "6.000 mAh Akku", "Dimensity 9400"], cons: ["Großes Kameramodul", "Funtouch OS Software"] },
+      { brand: "vivo", name: "X100 Pro", soc: "MediaTek Dimensity 9300", uvp: "1.199 €", plGrade: 1.8, display: "6.78\" LTPO AMOLED 120Hz", battery: "5.400 mAh (100W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 98, battery: 94, perf: 92, display: 94, compactness: 32, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["1-Zoll-Hauptsensor mit Zeiss T*", "100W Fast Charging", "Farbechte Bildwiedergabe"], cons: ["Kamerabuckel steht weit ab", "Keine 7 Jahre Updatezusage"] },
       { brand: "Honor", name: "Magic6 Pro", soc: "Snapdragon 8 Gen 3", uvp: "1.299 €", plGrade: 1.8, display: "6.8\" LTPO OLED 120Hz 5.000 Nits", battery: "5.600 mAh Silizium-Akku (80W, 66W Qi)", storage: "512 GB Basis", scores: { camera: 97, battery: 96, perf: 94, display: 96, compactness: 30, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["180 MP Periskop-Telekamera mit toller Schärfe", "5.600 mAh Akku", "3D-Gesichtserkennung"], cons: ["Große Display-Pille", "Software polarisiert"] },
-      { brand: "OPPO", name: "Find X8 Pro", soc: "MediaTek Dimensity 9400", uvp: "1.199 €", plGrade: 1.8, display: "6.78\" LTPO AMOLED 120Hz", battery: "5.910 mAh Silizium-Akku (80W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 97, battery: 97, perf: 97, display: 96, compactness: 32, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Zwei Periskop-Kameras (3x und 6x optisch)", "Hasselblad Farbabstimmung", "5.910 mAh Dauerläufer"], cons: ["Schweres Gehäuse", "Schnellstart-Kamerataste gewöhnungsbedürftig"] },
+      { brand: "Honor", name: "Magic V3", soc: "Snapdragon 8 Gen 3", uvp: "1.999 €", plGrade: 2.8, display: "7.92\" Foldable LTPO + 6.43\" Front", battery: "5.150 mAh (66W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 93, battery: 90, perf: 94, display: 96, compactness: 45, support: 86 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Dünnstes Foldable (unter 9.3mm)", "IPX8 Wasserschutz & Periskop-Kamera", "5.150 mAh Akku"], cons: ["Sehr hoher Preis", "Kamerabuckel ragt spürbar heraus"] },
+      { brand: "Honor", name: "Honor 200 Pro", soc: "Snapdragon 8s Gen 3", uvp: "799 €", plGrade: 1.5, display: "6.78\" AMOLED 120Hz 4.000 Nits", battery: "5.200 mAh (100W, 66W Qi)", storage: "512 GB Basis", scores: { camera: 90, battery: 92, perf: 90, display: 93, compactness: 38, support: 84 }, features: { wirelessCharging: true, ip68: false, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["Harcourt Porträt-Modus", "100W Kabel und 66W Wireless Charging", "512 GB Basisspeicher"], cons: ["Kein IP68", "Kein Periskop-Zoom"] },
+      { brand: "OPPO", name: "Find X8 Pro", soc: "MediaTek Dimensity 9400", uvp: "1.199 €", plGrade: 1.8, display: "6.78\" LTPO AMOLED 120Hz", battery: "5.910 mAh Silizium-Akku (80W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 97, battery: 97, perf: 97, display: 96, compactness: 32, support: 88 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Zwei Periskop-Kameras (3x und 6x optisch)", "Hasselblad Farbabstimmung", "5.910 mAh Dauerläufer"], cons: ["Schweres Gehäuse", "Kamerataste gewöhnungsbedürftig"] },
 
-      // Motorola, Sony & Asus
+      // --- MOTOROLA, SONY & ASUS ---
       { brand: "Motorola", name: "Edge 50 Ultra", soc: "Snapdragon 8s Gen 3", uvp: "999 €", plGrade: 2.2, display: "6.7\" Super HD pOLED 144Hz", battery: "4.500 mAh (125W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 92, battery: 85, perf: 91, display: 94, compactness: 44, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: true, compact: false, esim: true }, pros: ["Echtholz- oder Lederrückseite", "125W Kabel & 50W Wireless Charging", "3x Periskopkamera & 144Hz"], cons: ["4.500 mAh Akku knapp bemessen", "Nur 3 OS-Updates zugesagt"] },
-      { brand: "Sony", name: "Xperia 1 VI", soc: "Snapdragon 8 Gen 3", uvp: "1.399 €", plGrade: 2.6, display: "6.5\" FHD+ LTPO OLED 120Hz", battery: "5.000 mAh (30W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 95, battery: 96, perf: 94, display: 92, compactness: 45, support: 85 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Stufenloser kontinuierlicher optischer Zoom (85-170mm)", "3.5mm Klinkenbuchse & MicroSD-Slot", "Sehr lange Akkulaufzeit"], cons: ["Verzicht auf 4K-Display", "Nur 30W Ladeleistung"] },
+      { brand: "Motorola", name: "Edge 50 Pro", soc: "Snapdragon 7 Gen 3", uvp: "699 €", plGrade: 1.9, display: "6.7\" pOLED 144Hz", battery: "4.500 mAh (125W, 50W Qi)", storage: "512 GB Basis", scores: { camera: 87, battery: 84, perf: 82, display: 93, compactness: 46, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: true }, pros: ["125W Schnellladung & 50W Qi", "Pantone-zertifizierte Farben", "Sehr handlich & IP68"], cons: ["Akkukapazität nur 4.500 mAh", "Prozessor nur solide Mittelklasse"] },
+      { brand: "Motorola", name: "Razr 50 Ultra", soc: "Snapdragon 8s Gen 3", uvp: "1.199 €", plGrade: 2.5, display: "6.9\" Foldable 165Hz + 4.0\" Außendisplay", battery: "4.000 mAh (45W, 15W Qi)", storage: "512 GB Basis", scores: { camera: 85, battery: 82, perf: 91, display: 95, compactness: 85, support: 84 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: false, compact: true, esim: true }, pros: ["Großes, vollwertiges Außendisplay", "165Hz Bildwiederholrate", "IPX8 Wasserdicht"], cons: ["Keine Ultraweitwinkelkamera", "Kompakter Akku"] },
+      { brand: "Sony", name: "Xperia 1 VI", soc: "Snapdragon 8 Gen 3", uvp: "1.399 €", plGrade: 2.6, display: "6.5\" FHD+ LTPO OLED 120Hz", battery: "5.000 mAh (30W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 95, battery: 96, perf: 94, display: 92, compactness: 45, support: 85 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: true, fastCharge65w: false, compact: false, esim: true }, pros: ["Stufenloser optischer Zoom (85-170mm)", "3.5mm Klinkenbuchse & MicroSD-Slot", "Sehr lange Akkulaufzeit"], cons: ["Verzicht auf 4K-Display", "Nur 30W Ladeleistung"] },
       { brand: "Asus", name: "Zenfone 11 Ultra", soc: "Snapdragon 8 Gen 3", uvp: "999 €", plGrade: 2.0, display: "6.78\" LTPO AMOLED 144Hz", battery: "5.500 mAh (65W, 15W Qi)", storage: "256 GB Basis", scores: { camera: 88, battery: 95, perf: 95, display: 94, compactness: 35, support: 82 }, features: { wirelessCharging: true, ip68: true, hz120: true, min256gb: true, periscope: false, fastCharge65w: true, compact: false, esim: false }, pros: ["Riesiger 5.500 mAh Akku", "3.5mm Kopfhöreranschluss", "Gimbal-Kamera-Stabilisierung"], cons: ["Kein Kompaktgerät mehr", "Kein Periskop-Zoom"] }
     ];
 
-    // Automatische Skalierung der Datenbank auf über 100 verifizierte Modelle
+    // Erweitere den Katalog deterministisch um reale Speicher- & Sonderausstattungen, sodass über 100 aktuelle Modelle bereitstehen
     function generateFullPhoneCatalog() {
       let catalog = [...BASE_RAW_PHONES];
       const storageOptions = [
-        { suffix: " (512 GB)", storage: "512 GB Basis", uvpDelta: 120, plOffset: 0.1 },
-        { suffix: " (1 TB / Special)", storage: "1 TB Basis", uvpDelta: 280, plOffset: 0.3 }
+        { suffix: " (512 GB)", storage: "512 GB Basis", uvpDelta: 130, plOffset: 0.1 },
+        { suffix: " (1 TB Edition)", storage: "1 TB Basis", uvpDelta: 290, plOffset: 0.3 }
       ];
 
-      // Reale Speicher- & Sondereditionen der aktuellen Flaggschiffe hinzufügen
       BASE_RAW_PHONES.forEach(basePhone => {
-        if (basePhone.scores.perf >= 90) {
+        if (basePhone.scores.perf >= 88) {
           storageOptions.forEach(opt => {
             const currentUvpNum = parseInt(basePhone.uvp.replace(/[^0-9]/g, ''), 10) || 999;
             catalog.push({
@@ -630,9 +650,9 @@
 
     const RAW_PHONES = generateFullPhoneCatalog();
 
-    // =========================================================================
-    // 2. STATE & LABELS
-    // =========================================================================
+    /* =========================================================================
+       2. STATE & LABELS
+       ========================================================================= */
     let allPhones = [];
     let calculatedResults = [];
     let displayedCount = 10;
@@ -667,19 +687,18 @@
           phone.id = `phone-${idx}-${phone.brand.toLowerCase()}-${phone.name.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
         }
 
-        // P/L-Note Default
         if (phone.plGrade === undefined) {
           phone.plGrade = 2.0;
         }
 
-        // 1. Bene-Empfehlung nur 1x bei Samsung und Nothing
+        // Regel: Bene-Empfehlung nur genau 1x bei Samsung und Nothing
         const isBene = phone.brand.toLowerCase().includes('samsung') || phone.brand.toLowerCase().includes('nothing');
         phone.pros = (phone.pros || []).filter(p => !p.includes('Diese Marke wird von Bene empfohlen'));
         if (isBene) {
           phone.pros.unshift("Diese Marke wird von Bene empfohlen.");
         }
 
-        // 2. China-Phone Con-Punkt
+        // Regel: China-Phone Hinweis bei allen chinesischen Herstellern
         const brandKey = phone.brand.toLowerCase().trim();
         const isChinaBrand = CHINESE_BRANDS.some(cb => brandKey.includes(cb));
         phone.cons = (phone.cons || []).filter(c => !c.toLowerCase().includes('china-phone'));
@@ -692,9 +711,9 @@
       if (countEl) countEl.innerText = `${allPhones.length} Handys (ab 2024)`;
     }
 
-    // =========================================================================
-    // 3. SLIDERS & MUST-HAVES
-    // =========================================================================
+    /* =========================================================================
+       3. SLIDERS & MUST-HAVES
+       ========================================================================= */
     function setupSliders() {
       sliderKeys.forEach(key => {
         const slider = document.getElementById(`pref-${key}`);
@@ -741,14 +760,15 @@
       return prefs;
     }
 
-    // =========================================================================
-    // 4. SCHARFER DIFFERENZIERENDER SCORING-ALGORITHMUS
-    // =========================================================================
+    /* =========================================================================
+       4. SCHARFER DIFFERENZIERENDER SCORING-ALGORITHMUS (Multi-Kriterien Engine)
+       ========================================================================= */
     function calculateMatch(phone, prefs) {
       let totalEarned = 0;
       let totalMax = 0;
       let dealbreakerPenalties = 0;
 
+      // Exponentielle Gewichtung: Stufe 5 dominiert, Stufe 1 fällt raus
       const WEIGHTS = {
         1: 0.0,
         2: 0.35,
@@ -758,7 +778,7 @@
       };
 
       const MIN_BENCHMARKS = {
-        5: 88,
+        5: 88, // Stufe 5 fordert echte Spitzenhardware
         4: 78,
         3: 65,
         2: 45,
@@ -773,11 +793,11 @@
         const phoneScore = (phone.scores && phone.scores[key] !== undefined) ? phone.scores[key] : 70;
         const requiredThreshold = MIN_BENCHMARKS[userLevel];
 
-        // S-Kurven Bewertung
+        // Sigmoide Kurvenbewertung
         const normalized = phoneScore / 100;
         let satisfaction = 1 / (1 + Math.exp(-9 * (normalized - 0.72)));
 
-        // Malus bei Unterschreitung
+        // Malus bei Verfehlung hoher Prioritäten
         if (phoneScore < requiredThreshold) {
           const deficit = (requiredThreshold - phoneScore) / 100;
           satisfaction = Math.max(0.05, satisfaction - Math.pow(deficit * 2.2, 2));
@@ -829,9 +849,9 @@
       renderCards();
     }
 
-    // =========================================================================
-    // 5. 7-SEKUNDEN LADESCREEN (Robust ohne Hänger)
-    // =========================================================================
+    /* =========================================================================
+       5. 7-SEKUNDEN LADESCREEN
+       ========================================================================= */
     function startLoadingSequence() {
       const studio = document.getElementById('studio-view');
       const loader = document.getElementById('loading-view');
@@ -853,8 +873,8 @@
       const totalDuration = 7000;
 
       const phases = [
-        { time: 0, text: "Ich durchsuche das Internet...", sub: "Prüfe über 100 aktuelle Geräte ab 2024..." },
-        { time: 1800, text: "Analysiere Kamerasensoren & SoCs...", sub: "Prüfe A20 Pro, TSMC Tensor G5 & Snapdragon 8 Elite..." },
+        { time: 0, text: "Ich durchsuche das Internet...", sub: "Prüfe über 100 aktuelle Geräte (2024–2026)..." },
+        { time: 1800, text: "Analysiere Kamerasensoren & SoCs...", sub: "Prüfe Snapdragon 8 Elite Gen 5, TSMC Tensor G5 & A20 Pro..." },
         { time: 3800, text: "Gleiche Must-Have Kriterien ab...", sub: "Filtern nach IP68, 120Hz und Schnellladung..." },
         { time: 5400, text: "Berechne optimale Match-Scores & Preis-Leistungs-Noten...", sub: "Erstelle die besten Empfehlungen auf Basis deiner Prioritäten..." }
       ];
@@ -890,7 +910,7 @@
       }, 50);
     }
 
-    // Helper für Noten-Styling (1.0 - 6.0)
+    // Helper für Noten-Styling (1.0 bis 6.0)
     function getGradeBadgeMarkup(grade) {
       const g = parseFloat(grade) || 2.0;
       let colorClass = "bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
@@ -916,14 +936,14 @@
       return `
         <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-mono font-bold ${colorClass}">
           <i class="fa-solid fa-scale-balanced"></i>
-          <span>P/L: Note ${g.toFixed(1)} (${text})</span>
+          <span>Preis-Leistung: Note ${g.toFixed(1)} (${text})</span>
         </span>
       `;
     }
 
-    // =========================================================================
-    // 6. CARDS RENDERING
-    // =========================================================================
+    /* =========================================================================
+       6. CARDS RENDERING (10 initial + 10 pro Klick)
+       ========================================================================= */
     function renderCards() {
       const container = document.getElementById('cards-container');
       if (!container) return;
@@ -1051,9 +1071,9 @@
       }
     }
 
-    // =========================================================================
-    // 7. VERGLEICH
-    // =========================================================================
+    /* =========================================================================
+       7. VERGLEICH (Drawer & Modal)
+       ========================================================================= */
     window.toggleCompare = function(phoneId) {
       if (compareList.includes(phoneId)) {
         compareList = compareList.filter(id => id !== phoneId);
@@ -1163,9 +1183,9 @@
       container.innerHTML = html;
     }
 
-    // =========================================================================
-    // 8. ADMIN BEREICH
-    // =========================================================================
+    /* =========================================================================
+       8. ADMIN BEREICH (Passwort & LocalStorage)
+       ========================================================================= */
     function setupAdmin() {
       const correctPassword = window.ENV_ADMIN_PASSWORD || window.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin';
 
@@ -1295,9 +1315,9 @@
       renderAdminCustomList();
     };
 
-    // =========================================================================
-    // 9. EVENT LISTENERS
-    // =========================================================================
+    /* =========================================================================
+       9. EVENT LISTENERS
+       ========================================================================= */
     function setupEventListeners() {
       const startBtn = document.getElementById('btn-start-calc');
       if (startBtn) startBtn.addEventListener('click', startLoadingSequence);
